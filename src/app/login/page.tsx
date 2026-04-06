@@ -15,6 +15,11 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           {params.error ? <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{params.error}</p> : null}
           <button className="w-full rounded-xl bg-gradient-to-r from-accent to-sky-700 px-4 py-3 text-sm font-semibold text-white" type="submit">Entrar</button>
         </form>
+        <div className="mt-5 text-center text-sm text-slate-600">
+          <a className="font-semibold text-sky-700 underline decoration-sky-200 underline-offset-4" href="/login/forgot-password">
+            Esqueci minha senha
+          </a>
+        </div>
       </section>
     </main>
   );
