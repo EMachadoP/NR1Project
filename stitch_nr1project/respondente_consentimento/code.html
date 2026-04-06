@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Consentimento - Institutional Intelligence</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7f9ff",
+                    "surface-container": "#ebeef4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "background": "#f7f9ff",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-variant": "#dfe3e8",
+                    "on-secondary-fixed": "#0c1c2f",
+                    "on-secondary-container": "#56657b",
+                    "outline": "#727783",
+                    "tertiary-container": "#8f3c00",
+                    "on-surface": "#181c20",
+                    "inverse-surface": "#2d3135",
+                    "surface-container-low": "#f1f4fa",
+                    "on-tertiary-fixed": "#341100",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#d4e3fe",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "surface-container-highest": "#dfe3e8",
+                    "secondary": "#505f75",
+                    "on-secondary-fixed-variant": "#39485d",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d7dae0",
+                    "outline-variant": "#c2c6d3",
+                    "primary-fixed": "#d6e3ff",
+                    "surface": "#f7f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#afcbff",
+                    "tertiary": "#6a2b00",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d4e3fe",
+                    "secondary-fixed-dim": "#b8c7e1",
+                    "on-surface-variant": "#424751",
+                    "on-tertiary-container": "#ffbb99",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a9c7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eef1f7",
+                    "surface-container-high": "#e5e8ee",
+                    "primary": "#003d7c",
+                    "surface-tint": "#185eb0",
+                    "on-background": "#181c20",
+                    "primary-container": "#0054a6",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-primary-fixed-variant": "#00468c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9ff;
+            color: #181c20;
+        }
+        h1, h2, .brand-text {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center pb-32">
+<!-- TopNavBar (Shell Suppression: Not rendered for transactional consent flow) -->
+<header class="w-full fixed top-0 left-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" data-icon="shield">shield</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-blue-900 dark:text-blue-100 font-['Public_Sans']">Institutional Intelligence</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Progresso</span>
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-primary">Etapa 1 de 5</span>
+</div>
+</div>
+</header>
+<!-- Progress Indicator Bar (The "Flow" State) -->
+<div class="fixed top-[68px] left-0 w-full z-40 h-[2px] bg-surface-variant">
+<div class="h-[4px] bg-primary absolute -top-[1px] transition-all duration-500" style="width: 20%;"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="mt-28 px-5 w-full max-w-lg">
+<!-- Hero Section Header -->
+<div class="mb-8">
+<h1 class="text-3xl font-extrabold text-primary tracking-tight leading-tight mb-2">Termo de Consentimento e Privacidade</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sua privacidade e a integridade de seus dados são os pilares da nossa metodologia de inteligência institucional.</p>
+</div>
+<!-- Content Card: The Digital Architect Style (Tonal Layering) -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/10 mb-8">
+<div class="flex items-center gap-3 mb-5">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="lock">lock</span>
+<h2 class="text-lg font-bold text-on-surface">Uso de Dados e Ética</h2>
+</div>
+<div class="space-y-4 text-on-surface-variant text-sm leading-relaxed">
+<p>
+                    Informamos que os dados coletados através deste questionário são processados de forma <strong class="text-primary font-semibold">totalmente anônima</strong>. A Institutional Intelligence utiliza protocolos de criptografia de ponta a ponta para garantir que nenhuma resposta possa ser vinculada à sua identidade pessoal.
+                </p>
+<p>
+                    As informações fornecidas serão agregadas a um banco de dados macro-estrutural para a geração de relatórios de risco e indicadores de desempenho institucional, em estrita conformidade com a Lei Geral de Proteção de Dados (LGPD).
+                </p>
+<div class="p-4 bg-surface-container-low rounded-lg border-l-4 border-primary">
+<p class="italic text-xs">
+                        "Nossa arquitetura de dados prioriza a segurança estrutural acima de tudo, eliminando riscos de vazamento ou exposição individual."
+                    </p>
+</div>
+</div>
+</div>
+<!-- Interactive Section: Checkboxes (Tone and Contrast) -->
+<section class="space-y-4 mb-12">
+<label class="flex items-start gap-4 p-4 rounded-xl bg-surface-container transition-all active:scale-[0.98] cursor-pointer">
+<div class="mt-0.5">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-container transition-all" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold text-sm">Li e concordo com os termos</span>
+<span class="text-on-surface-variant text-xs">Confirmo que compreendi os protocolos de privacidade descritos acima.</span>
+</div>
+</label>
+<label class="flex items-start gap-4 p-4 rounded-xl bg-surface-container transition-all active:scale-[0.98] cursor-pointer">
+<div class="mt-0.5">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-container transition-all" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold text-sm">Entendo que minha resposta é anônima</span>
+<span class="text-on-surface-variant text-xs">Estou ciente de que meus dados individuais não serão identificáveis.</span>
+</div>
+</label>
+</section>
+<!-- Illustration / Visual Anchor -->
+<div class="relative w-full h-40 rounded-2xl overflow-hidden mb-12 bg-surface-container">
+<img alt="Cybersecurity and data protection visual" class="w-full h-full object-cover opacity-60 mix-blend-overlay" data-alt="Abstract close-up of computer circuit board with glowing blue binary data streams in a dark technical environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAB0bOTbiAGfi1lIF9tJc-_0ER__SMc3MdfCkbZH5DIUHRX-uSGATx937BswMGf2GhGo0195_4EWTCHaqRqldzx3ShMZH57HVVYZ60dUshQAFMdg7Qc5lNqlKWhqHc1B6myAkLeHhmD0Z6OQOvNX3iDg2g302eUFLBszEqL_-g8gFppRd-l89HMCcnCxMo1jOMH2GzqOwww-jkv6UrFWEDmSqfwh9QbdaOsYULapymKC6xnHXBHH_rNiYcyjdaiG6sY35aBAeXMQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-bright via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter">Conformidade Global NR-1</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (The "Anchor" for Task-Focused Journeys) -->
+<!-- The BottomNavBar JSON provides labels ["Back", "Next"] which I will map to ["Voltar", "Próximo"] based on user requirements -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-between items-center px-6 py-4 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50">
+<!-- Voltar (Inactive Style) -->
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-6 py-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="arrow_back">arrow_back</span>
+<span class="font-['Public_Sans'] text-xs font-bold uppercase tracking-wider">Voltar</span>
+</button>
+<!-- Próximo (Active/Primary Style - Disabled state visually represented via opacity) -->
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-xl px-10 py-2 hover:opacity-90 active:scale-95 transition-all opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mb-1" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-['Public_Sans'] text-xs font-bold uppercase tracking-wider">Próximo</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Intelligence | Indicators &amp; Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7f9ff",
+                    "surface-container": "#ebeef4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "background": "#f7f9ff",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-variant": "#dfe3e8",
+                    "on-secondary-fixed": "#0c1c2f",
+                    "on-secondary-container": "#56657b",
+                    "outline": "#727783",
+                    "tertiary-container": "#8f3c00",
+                    "on-surface": "#181c20",
+                    "inverse-surface": "#2d3135",
+                    "surface-container-low": "#f1f4fa",
+                    "on-tertiary-fixed": "#341100",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#d4e3fe",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "surface-container-highest": "#dfe3e8",
+                    "secondary": "#505f75",
+                    "on-secondary-fixed-variant": "#39485d",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d7dae0",
+                    "outline-variant": "#c2c6d3",
+                    "primary-fixed": "#d6e3ff",
+                    "surface": "#f7f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#afcbff",
+                    "tertiary": "#6a2b00",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d4e3fe",
+                    "secondary-fixed-dim": "#b8c7e1",
+                    "on-surface-variant": "#424751",
+                    "on-tertiary-container": "#ffbb99",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a9c7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eef1f7",
+                    "surface-container-high": "#e5e8ee",
+                    "primary": "#003d7c",
+                    "surface-tint": "#185eb0",
+                    "on-background": "#181c20",
+                    "primary-container": "#0054a6",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-primary-fixed-variant": "#00468c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar (Authority Source: JSON + Design System) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 border-r border-slate-200 flex flex-col py-6 z-40 hidden md:flex">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h2 class="font-['Public_Sans'] font-bold text-blue-900 text-lg leading-none">Risk Manager</h2>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Institutional Portal</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Navigation Items (Semantic Mapping: Indicators is Active) -->
+<a class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 ease-in-out font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined mr-3">campaign</span>
+                Campaigns
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 ease-in-out font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined mr-3">assignment</span>
+                Questionnaires
+            </a>
+<!-- Active State -->
+<a class="flex items-center px-6 py-3 bg-blue-50 text-blue-800 font-bold border-r-4 border-blue-800 font-['Inter'] text-sm transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">analytics</span>
+                Indicators
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 ease-in-out font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined mr-3">assessment</span>
+                Reports
+            </a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<div class="h-[1px] bg-slate-200 mx-2 mb-4"></div>
+<a class="flex items-center px-6 py-2 text-slate-500 hover:text-blue-900 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-lg">help</span>
+                Support
+            </a>
+<a class="flex items-center px-6 py-2 text-slate-500 hover:text-error transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-lg">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopAppBar (Authority Source: JSON) -->
+<header class="fixed top-0 md:left-64 right-0 z-30 bg-white/80 backdrop-blur-md shadow-sm flex justify-between items-center px-8 py-4">
+<div class="flex items-center gap-4">
+<h1 class="text-xl font-bold tracking-tight text-blue-900 font-['Public_Sans']">Institutional Intelligence</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex relative">
+<input class="bg-surface-container border-none rounded-full py-2 px-10 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search insights..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2 text-slate-400 text-lg">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-blue-900 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-blue-900 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+<img alt="HR Manager Profile" class="w-full h-full object-cover" data-alt="Professional headshot of an HR Manager in a corporate office environment with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdAP0p4pbONmal8U9Tp1xiI8O1aRgyAJTnVZrt5-3yu9K3m9R37BYHQGAdGduedBXwhwDuE6n4RoWrFsHFtd29BHjDA2GHtRhNs7zUVdW90gbr1O080fccbapwiqmsGRuT3_rrMcp6ZkqzgMN_Ekagamjjp8q0M2HEmEcJMLEyUvmAGFe9j_KO7wGfG5Qar5VIPfkOOxgCerZcZRmFSGBnhgGkFRyTyVEvfXfCMhzAFtsBpswUOdoB6I9cAQYer-XBrEk-t0XiwA"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<div class="pt-24 px-8 pb-12 max-w-7xl mx-auto">
+<!-- Hero Section / Header -->
+<section class="mb-10">
+<span class="text-xs font-bold tracking-[0.2em] text-primary uppercase mb-2 block">Performance Analytics</span>
+<h2 class="text-4xl font-extrabold text-on-surface font-headline tracking-tight">Indicadores de Monitoramento</h2>
+<p class="text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
+                    Acompanhamento estrutural dos índices de risco institucional. Compare o desempenho do período atual com o histórico anterior para identificar tendências críticas.
+                </p>
+</section>
+<!-- Indicators Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+<!-- Main Table Container -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-1 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider font-label">Dimensão de Risco</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider font-label text-center">Último Período</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider font-label text-center">Período Atual</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider font-label text-center">Variação</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider font-label text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="font-semibold text-on-surface">Risco de Conformidade</div>
+<div class="text-[10px] text-on-surface-variant">Regulamentações NR-1 e NR-12</div>
+</td>
+<td class="px-6 py-5 text-center font-medium">84.2%</td>
+<td class="px-6 py-5 text-center font-bold text-primary">89.5%</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center text-green-600 gap-1 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                            +5.3%
+                                        </div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-wider border border-green-100">Dentro da Meta</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="font-semibold text-on-surface">Cultura de Segurança</div>
+<div class="text-[10px] text-on-surface-variant">Pesquisa de Engajamento Interno</div>
+</td>
+<td class="px-6 py-5 text-center font-medium">72.0%</td>
+<td class="px-6 py-5 text-center font-bold text-primary">68.4%</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center text-error gap-1 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                                            -3.6%
+                                        </div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary text-on-tertiary text-[10px] font-bold uppercase tracking-wider">Crítico</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="font-semibold text-on-surface">Eficiência Operacional</div>
+<div class="text-[10px] text-on-surface-variant">Otimização de Processos HR</div>
+</td>
+<td class="px-6 py-5 text-center font-medium">91.5%</td>
+<td class="px-6 py-5 text-center font-bold text-primary">92.1%</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center text-slate-500 gap-1 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">horizontal_rule</span>
+                                            +0.6%
+                                        </div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant text-[10px] font-bold uppercase tracking-wider border border-outline-variant/30">Estável</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Summary/Insight Card -->
+<div class="bg-primary p-8 rounded-xl text-white flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<div class="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<h3 class="text-2xl font-bold mb-3 leading-tight">Insight da Inteligência</h3>
+<p class="text-primary-fixed/80 text-sm leading-relaxed">
+                            A redução na "Cultura de Segurança" está diretamente correlacionada ao aumento de tickets de suporte no setor operacional. Recomenda-se exportar o Relatório Analítico Detalhado.
+                        </p>
+</div>
+<div class="mt-8 relative z-10">
+<div class="text-4xl font-extrabold tracking-tight">82.4%</div>
+<div class="text-[10px] uppercase tracking-widest text-primary-fixed/60 mt-1">Score Global de Saúde Institucional</div>
+</div>
+<!-- Abstract Background Shape -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary-container rounded-full opacity-50 blur-3xl"></div>
+</div>
+</div>
+<!-- Reports Section -->
+<section>
+<div class="flex items-end justify-between mb-8 border-b border-surface-container pb-4">
+<div>
+<h2 class="text-2xl font-bold text-on-surface font-headline">Relatórios e Exportações</h2>
+<p class="text-on-surface-variant text-sm mt-1">Geração de documentos técnicos e dados brutos para auditoria.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-surface-container-highest text-on-secondary-fixed-variant rounded-md text-sm font-bold flex items-center gap-2 hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined text-lg">cloud_download</span>
+                            Exportar Excel
+                        </button>
+<button class="px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white rounded-md text-sm font-bold shadow-lg shadow-primary/20 flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+                            Baixar PDF
+                        </button>
+</div>
+</div>
+<!-- Reports List (Asymmetric Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Analytical Report -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-primary flex items-start gap-5 hover:shadow-lg transition-shadow cursor-pointer">
+<div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Relatório Analítico Detalhado</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Visão macro com cruzamento de dados, heatmaps de risco e projeções trimestrais.</p>
+<div class="flex items-center gap-4 mt-4 text-[10px] font-bold text-on-surface-variant/60 uppercase">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> Atualizado há 2h</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">attachment</span> PDF (12.4 MB)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+<!-- Individual Summaries -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-secondary flex items-start gap-5 hover:shadow-lg transition-shadow cursor-pointer">
+<div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-3xl">groups</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Sumários Individuais de Respondentes</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Compilação de feedbacks qualitativos segmentados por departamento e nível hierárquico.</p>
+<div class="flex items-center gap-4 mt-4 text-[10px] font-bold text-on-surface-variant/60 uppercase">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> Semanal</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">attachment</span> PDF (4.8 MB)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+<!-- CSV Raw Data -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-outline flex items-start gap-5 hover:shadow-lg transition-shadow cursor-pointer">
+<div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline text-3xl">database</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Dados Brutos (CSV/JSON)</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Dataset completo para integração com BI proprietário ou auditorias externas.</p>
+<div class="flex items-center gap-4 mt-4 text-[10px] font-bold text-on-surface-variant/60 uppercase">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">terminal</span> Raw Export</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">attachment</span> CSV (28.1 MB)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+<!-- Quick Action Card -->
+<div class="bg-slate-100 p-6 rounded-xl border border-dashed border-slate-300 flex items-center justify-center group cursor-pointer hover:bg-slate-200 transition-colors">
+<div class="text-center">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 group-hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="text-sm font-bold text-slate-500 group-hover:text-slate-700">Solicitar Relatório Customizado</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Visual Polish: Architectural Dividers -->
+<div class="fixed top-0 bottom-0 left-64 w-[1px] bg-slate-200 pointer-events-none hidden md:block"></div>
+</body></html>

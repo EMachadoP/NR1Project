@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Questionnaire - Institutional Intelligence</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7f9ff",
+                    "surface-container": "#ebeef4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "background": "#f7f9ff",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-variant": "#dfe3e8",
+                    "on-secondary-fixed": "#0c1c2f",
+                    "on-secondary-container": "#56657b",
+                    "outline": "#727783",
+                    "tertiary-container": "#8f3c00",
+                    "on-surface": "#181c20",
+                    "inverse-surface": "#2d3135",
+                    "surface-container-low": "#f1f4fa",
+                    "on-tertiary-fixed": "#341100",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#d4e3fe",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "surface-container-highest": "#dfe3e8",
+                    "secondary": "#505f75",
+                    "on-secondary-fixed-variant": "#39485d",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d7dae0",
+                    "outline-variant": "#c2c6d3",
+                    "primary-fixed": "#d6e3ff",
+                    "surface": "#f7f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#afcbff",
+                    "tertiary": "#6a2b00",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d4e3fe",
+                    "secondary-fixed-dim": "#b8c7e1",
+                    "on-surface-variant": "#424751",
+                    "on-tertiary-container": "#ffbb99",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a9c7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eef1f7",
+                    "surface-container-high": "#e5e8ee",
+                    "primary": "#003d7c",
+                    "surface-tint": "#185eb0",
+                    "on-background": "#181c20",
+                    "primary-container": "#0054a6",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-primary-fixed-variant": "#00468c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { font-variation-settings: 'FILL' 1; }
+        
+        /* Progress Bar Custom Step Logic */
+        .progress-track { height: 2px; background-color: #dfe3e8; }
+        .progress-fill { height: 4px; top: -1px; background: linear-gradient(135deg, #003d7c 0%, #0054a6 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation Bar (HR/Institutional Shell) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-6 py-3 w-full">
+<div class="text-xl font-bold tracking-tight text-blue-900 font-headline">
+            Institutional Intelligence
+        </div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img alt="HR Manager Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional corporate manager in a clean bright office environment with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuzin-N61eB2lKLYVBvWnRA1HJzgRLn2jO7UHyj4CeCxbcewHZw37C7TmTa7mFNziIQuceEm2m-PBrN8ZMpSP6KJh6eY39C_aM5QWf1Sfxdq9b4kwSDMi0fqpVdD32IQ0J469OVC2Llsc0J_2oIgDHuAZ_Y4uo8z4DlJGXpgTjWNZY5aU5n0RApRKakqku-rXjMahOYEQC1uWN-TIOWJD4Kt_NgOROc01lnfsROTWEy-XOgTg9h1mjL4B0ux3UXEdqawFUukqvUw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-32 min-h-screen px-4 max-w-lg mx-auto">
+<!-- Questionnaire Header & Progress -->
+<section class="mb-8">
+<div class="flex flex-col gap-2 mb-6">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[0.7rem] uppercase tracking-[0.1em] font-bold text-on-surface-variant font-label">Questionário de Risco</p>
+<h1 class="text-2xl font-extrabold font-headline leading-tight text-primary">Ambiente de Trabalho</h1>
+</div>
+<span class="text-sm font-bold text-primary-container bg-secondary-container px-3 py-1 rounded-full">2 de 5</span>
+</div>
+<!-- Custom Progress Bar (The Stepping Effect) -->
+<div class="relative w-full mt-4">
+<div class="progress-track w-full rounded-full"></div>
+<div class="progress-fill absolute left-0 w-[40%] rounded-full shadow-sm"></div>
+</div>
+</div>
+<!-- Intro Editorial Concept -->
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-primary">
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                    Nesta seção, avaliaremos as condições físicas do seu posto de trabalho. Suas respostas são fundamentais para o mapeamento de riscos institucionais.
+                </p>
+</div>
+</section>
+<!-- Question List -->
+<form class="space-y-6">
+<!-- Question Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/10">
+<h3 class="font-semibold text-lg mb-6 leading-snug">1. O ambiente é seguro para a realização das suas tarefas diárias?</h3>
+<div class="flex justify-between items-center px-2">
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">Discordo</span>
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">Concordo</span>
+</div>
+<div class="flex justify-between items-center mt-3 gap-2">
+<!-- Likert Scale 1-5 -->
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q1" type="radio" value="1"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">1</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q1" type="radio" value="2"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">2</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q1" type="radio" value="3"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">3</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q1" type="radio" value="4"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">4</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q1" type="radio" value="5"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">5</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Question Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/10">
+<h3 class="font-semibold text-lg mb-6 leading-snug">2. Há iluminação adequada para o seu tipo de trabalho?</h3>
+<div class="flex justify-between items-center px-2">
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">Discordo</span>
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">Concordo</span>
+</div>
+<div class="flex justify-between items-center mt-3 gap-2">
+<!-- Likert Scale 1-5 -->
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q2" type="radio" value="1"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">1</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q2" type="radio" value="2"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">2</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q2" type="radio" value="3"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">3</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q2" type="radio" value="4"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">4</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q2" type="radio" value="5"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">5</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Question Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/10">
+<h3 class="font-semibold text-lg mb-6 leading-snug">3. Os equipamentos fornecidos são ergonômicos e funcionais?</h3>
+<div class="flex justify-between items-center px-2">
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">Discordo</span>
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">Concordo</span>
+</div>
+<div class="flex justify-between items-center mt-3 gap-2">
+<!-- Likert Scale 1-5 -->
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q3" type="radio" value="1"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">1</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q3" type="radio" value="2"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">2</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q3" type="radio" value="3"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">3</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q3" type="radio" value="4"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">4</span>
+</div>
+</label>
+<label class="flex-1 flex flex-col items-center gap-2 cursor-pointer group">
+<input class="hidden peer" name="q3" type="radio" value="5"/>
+<div class="w-full h-10 rounded-lg bg-surface-container peer-checked:bg-primary transition-all flex items-center justify-center">
+<span class="text-sm font-bold text-on-surface-variant peer-checked:text-white">5</span>
+</div>
+</label>
+</div>
+</div>
+</form>
+</main>
+<!-- Bottom Navigation Bar (Active State Logic applied to 'Próximo') -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-between items-center px-6 py-4 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50">
+<!-- Back Action (Inactive Style) -->
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-6 py-2 hover:opacity-90 active:scale-95 transition-all font-label text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined mb-1">arrow_back</span>
+            Voltar
+        </button>
+<!-- Next Action (Active Style: Nearest match to 'Próximo' logic) -->
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-xl px-8 py-2 hover:opacity-90 active:scale-95 transition-all font-label text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined mb-1">arrow_forward</span>
+            Próximo
+        </button>
+</nav>
+</body></html>

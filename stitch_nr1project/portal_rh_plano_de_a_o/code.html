@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Intelligence | Plano de Ação Corretiva</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f7f9ff",
+                        "surface-container": "#ebeef4",
+                        "tertiary-fixed": "#ffdbcb",
+                        "background": "#f7f9ff",
+                        "on-primary-fixed": "#001b3d",
+                        "surface-variant": "#dfe3e8",
+                        "on-secondary-fixed": "#0c1c2f",
+                        "on-secondary-container": "#56657b",
+                        "outline": "#727783",
+                        "tertiary-container": "#8f3c00",
+                        "on-surface": "#181c20",
+                        "inverse-surface": "#2d3135",
+                        "surface-container-low": "#f1f4fa",
+                        "on-tertiary-fixed": "#341100",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-container": "#d4e3fe",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "surface-container-highest": "#dfe3e8",
+                        "secondary": "#505f75",
+                        "on-secondary-fixed-variant": "#39485d",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d7dae0",
+                        "outline-variant": "#c2c6d3",
+                        "primary-fixed": "#d6e3ff",
+                        "surface": "#f7f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#afcbff",
+                        "tertiary": "#6a2b00",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d4e3fe",
+                        "secondary-fixed-dim": "#b8c7e1",
+                        "on-surface-variant": "#424751",
+                        "on-tertiary-container": "#ffbb99",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#a9c7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eef1f7",
+                        "surface-container-high": "#e5e8ee",
+                        "primary": "#003d7c",
+                        "surface-tint": "#185eb0",
+                        "on-background": "#181c20",
+                        "primary-container": "#0054a6",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-primary-fixed-variant": "#00468c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Public Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .brand-text { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 border-r border-slate-200 flex flex-col py-6 z-40 hidden md:flex">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div>
+<h2 class="font-['Public_Sans'] font-bold text-blue-900 text-lg leading-none">Risk Manager</h2>
+<span class="text-xs text-on-surface-variant opacity-70">Institutional Portal</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-['Inter'] text-sm">Campaigns</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-['Inter'] text-sm">Questionnaires</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-800 font-bold border-r-4 border-blue-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Inter'] text-sm">Indicators</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-['Inter'] text-sm">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-['Inter'] text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-['Inter'] text-sm">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 md:left-64 bg-white/80 backdrop-blur-md z-30 shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 w-full">
+<h1 class="text-xl font-bold tracking-tight text-blue-900 brand-text">Institutional Intelligence</h1>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-xl text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search insights..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional HR manager in a modern office setting, clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwT-s5vjRN-ok6JmIZsNQeEwRZO3GjJ3OoDWDb5otD3OtfXqoKYW_Y0Q7zBzhASv6P4GFRqDA6jud-U4mKuDhV4irrlvtSsTPTAzA7a-Xq3J6au2HgZhIVOEcKfN5u1qQJkdzp4dyYassoA3FCjOLNQlFUNdYFd8MapRoVrkKaC8bJ60TXFITOVa7Oak4XsJPhsq1sgQPaVpugtRjvV7K6TxJl-mFiGAHpNZOHX7KCNIsMba7UnWX8p4eTLXt0hmE_tkbFEkkh1Q"/>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-100/50 h-[1px]"></div>
+</header>
+<div class="pt-24 px-8 pb-12">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs font-medium text-on-surface-variant mb-2">
+<span class="hover:text-primary cursor-pointer">Portal</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="hover:text-primary cursor-pointer">Indicadores</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary">Plano de Ação Corretiva</span>
+</nav>
+<h2 class="text-4xl font-extrabold brand-text text-primary leading-tight">Plano de Ação Corretiva</h2>
+<p class="text-on-surface-variant mt-2 max-w-2xl">Gestão estratégica de riscos institucionais e medidas mitigadoras baseadas em inteligência analítica.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                    Nova Ação
+                </button>
+</div>
+<!-- Filters Area -->
+<section class="bg-surface-container-low rounded-2xl p-6 mb-8 flex flex-wrap gap-4 items-center">
+<div class="flex flex-col gap-1.5 flex-1 min-w-[200px]">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant ml-1">Campanha de Origem</label>
+<select class="bg-surface-container-lowest border-none rounded-xl text-sm py-2.5 focus:ring-2 focus:ring-primary/20">
+<option>Q3 2024 - Clima Institucional</option>
+<option>Anual 2023 - Conformidade NR-1</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5 flex-1 min-w-[200px]">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant ml-1">Setor / Departamento</label>
+<select class="bg-surface-container-lowest border-none rounded-xl text-sm py-2.5 focus:ring-2 focus:ring-primary/20">
+<option>Todos os Setores</option>
+<option>Operações Industriais</option>
+<option>Logística &amp; Supply</option>
+<option>Administrativo</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5 w-48">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant ml-1">Nível de Risco</label>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-error/10 text-error flex items-center justify-center border border-error/20"><span class="material-symbols-outlined text-sm">priority_high</span></button>
+<button class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary-container flex items-center justify-center border border-tertiary-fixed"><span class="material-symbols-outlined text-sm">warning</span></button>
+<button class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center border border-green-200"><span class="material-symbols-outlined text-sm">check_circle</span></button>
+</div>
+</div>
+<div class="flex items-end h-full pt-6">
+<button class="px-5 py-2.5 bg-secondary text-white rounded-xl text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                        Filtrar
+                    </button>
+</div>
+</section>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border-t border-slate-100">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50">
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Origem</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Risco Identificado</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Medida Sugerida</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Responsável</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Prazo</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-blue-900">Segurança Industrial</span>
+<span class="text-xs text-on-surface-variant">Questão 4.2 - EPIs</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary text-on-tertiary text-[10px] font-bold">CRÍTICO</span>
+<p class="text-xs mt-1 text-on-surface">Uso inadequado de protetores auriculares em zona de ruído &gt; 85dB.</p>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-start gap-2 max-w-xs">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<p class="text-xs text-on-surface leading-relaxed">Reciclagem obrigatória de treinamento e substituição imediata do lote de protetores tipo plug.</p>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-primary flex items-center justify-center text-[10px] font-bold">RM</div>
+<span class="text-xs font-medium">Ricardo M.</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-[10px] font-bold text-error">15 OUT 2024</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                                    PENDENTE
+                                </span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="p-2 hover:bg-primary/10 text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-blue-900">Cultura Organizacional</span>
+<span class="text-xs text-on-surface-variant">Questão 1.5 - Liderança</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-low text-on-tertiary-fixed-variant text-[10px] font-bold border border-outline-variant">MÉDIO</span>
+<p class="text-xs mt-1 text-on-surface">Baixo índice de feedback formal entre gestores e equipe técnica.</p>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-start gap-2 max-w-xs">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">lightbulb</span>
+<p class="text-xs text-on-surface leading-relaxed">Implementação de rituais semanais de 1:1 assistidos pela plataforma.</p>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-secondary flex items-center justify-center text-[10px] font-bold">AF</div>
+<span class="text-xs font-medium">Ana Faria</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-[10px] font-bold text-on-surface-variant">22 OUT 2024</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    EM CURSO
+                                </span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="p-2 hover:bg-primary/10 text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-blue-900">Infraestrutura</span>
+<span class="text-xs text-on-surface-variant">Setor Administrativo</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-green-50 text-green-700 text-[10px] font-bold border border-green-200">BAIXO</span>
+<p class="text-xs mt-1 text-on-surface">Iluminação deficiente em postos de trabalho remotos no bloco B.</p>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-start gap-2 max-w-xs">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">handyman</span>
+<p class="text-xs text-on-surface leading-relaxed">Instalação de luminárias LED auxiliares e ajuste de layout.</p>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-on-tertiary-container text-tertiary flex items-center justify-center text-[10px] font-bold">JG</div>
+<span class="text-xs font-medium">João G.</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-[10px] font-bold text-on-surface-variant">05 OUT 2024</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 text-green-800 text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                    CONCLUÍDO
+                                </span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="p-2 hover:bg-primary/10 text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-slate-50/50 flex justify-between items-center">
+<span class="text-xs text-on-surface-variant font-medium">Exibindo 1-10 de 48 ações</span>
+<div class="flex gap-2">
+<button class="p-1.5 border border-outline-variant rounded-lg hover:bg-white transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-1.5 border border-outline-variant rounded-lg hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Snapshot Cards (Asymmetric Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+<div class="md:col-span-2 bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl p-8 text-white relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Insights da IA</span>
+<h3 class="text-2xl font-bold mt-2 mb-4 brand-text">Otimização de Resposta</h3>
+<p class="text-blue-100 text-sm max-w-md leading-relaxed">Detectamos uma correlação entre o atraso nas ações de Segurança e o setor de Logística. Sugerimos agrupar treinamentos para reduzir o tempo de execução em 14%.</p>
+<button class="mt-6 px-5 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-xl text-xs font-bold transition-all">Ver Relatório Completo</button>
+</div>
+<!-- Decorative Glass Element -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute right-8 top-1/2 -translate-y-1/2 opacity-20">
+<span class="material-symbols-outlined text-9xl">insights</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-8 border border-slate-100 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Taxa de Conclusão</span>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-5xl font-extrabold brand-text text-primary">72%</span>
+<span class="text-green-600 text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span> 5%</span>
+</div>
+</div>
+<div class="mt-8">
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-3 font-medium">Meta trimestral: 85%</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation (Only visible on mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-xl border-t border-slate-200 flex justify-around items-center px-6 py-4 pb-safe z-50">
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-xl px-6 py-2 shadow-lg">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold mt-1">Ações</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold mt-1">Perfil</span>
+</div>
+</nav>
+</body></html>

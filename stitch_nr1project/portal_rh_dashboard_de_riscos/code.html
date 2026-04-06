@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR Portal: Campaign Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7f9ff",
+                    "surface-container": "#ebeef4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "background": "#f7f9ff",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-variant": "#dfe3e8",
+                    "on-secondary-fixed": "#0c1c2f",
+                    "on-secondary-container": "#56657b",
+                    "outline": "#727783",
+                    "tertiary-container": "#8f3c00",
+                    "on-surface": "#181c20",
+                    "inverse-surface": "#2d3135",
+                    "surface-container-low": "#f1f4fa",
+                    "on-tertiary-fixed": "#341100",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#d4e3fe",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "surface-container-highest": "#dfe3e8",
+                    "secondary": "#505f75",
+                    "on-secondary-fixed-variant": "#39485d",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d7dae0",
+                    "outline-variant": "#c2c6d3",
+                    "primary-fixed": "#d6e3ff",
+                    "surface": "#f7f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#afcbff",
+                    "tertiary": "#6a2b00",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d4e3fe",
+                    "secondary-fixed-dim": "#b8c7e1",
+                    "on-surface-variant": "#424751",
+                    "on-tertiary-container": "#ffbb99",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a9c7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eef1f7",
+                    "surface-container-high": "#e5e8ee",
+                    "primary": "#003d7c",
+                    "surface-tint": "#185eb0",
+                    "on-background": "#181c20",
+                    "primary-container": "#0054a6",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-primary-fixed-variant": "#00468c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; }
+        .font-headline { font-family: 'Public Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    </style>
+</head>
+<body class="text-on-surface bg-surface min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 border-r border-slate-200 flex flex-col py-6 z-40">
+<div class="px-6 mb-10">
+<h1 class="font-headline font-bold text-blue-900 text-lg leading-tight">Risk Manager</h1>
+<p class="text-xs text-on-surface-variant font-medium">Institutional Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 bg-blue-50 text-blue-800 font-bold border-r-4 border-blue-800 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">campaign</span>
+<span>Campaigns</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">assignment</span>
+<span>Questionnaires</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span>Indicators</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">assessment</span>
+<span>Reports</span>
+</a>
+</nav>
+<div class="px-6 pt-6 border-t border-slate-200 space-y-1">
+<a class="flex items-center py-2 text-slate-600 hover:text-blue-900 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+<span class="text-sm">Support</span>
+</a>
+<a class="flex items-center py-2 text-slate-600 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="text-sm">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 bg-white/80 backdrop-blur-md z-30 shadow-sm px-8 py-3 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="font-headline font-bold tracking-tight text-blue-900 text-xl">Institutional Intelligence</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<input class="bg-surface-container-low border-none rounded-full py-1.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search insights..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant">
+<button class="hover:text-blue-600 transition-colors cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-blue-600 transition-colors cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="HR Manager Profile" class="w-full h-full object-cover" data-alt="Professional headshot of a mature corporate executive with a confident smile in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBd-4qi910vhXFEqUUs9ECRrGjtTSiNI9FoX_ZACLsNQssZvn0SuP97EfhEGR5YzSiWS_Hm36rRf997eDBgfTvoyFG83IJ43VOUloPt5piFQQD8c6bSU5K73tWB9imyaLOPRNCxB39gnylZ1mNfWD7h397v2TvPje-27plJ5toJTA5yAix8qTDwm94QFAORQEKTDNUXj1GkLqMTX-6Jymd1ANsHGOSE331AZMkNt0BBf8Q9j1Qv9Cx_RDsTvoNq46d_ksfzC1KnQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="pt-24 px-10 pb-16 space-y-8">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<nav class="flex text-xs font-medium text-on-surface-variant mb-2 gap-2">
+<span>Campaigns</span>
+<span>/</span>
+<span class="text-primary">Dashboard</span>
+</nav>
+<h2 class="font-headline text-3xl font-extrabold text-blue-900 tracking-tight">Dashboard: Campanha NR-1 Outubro</h2>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3 rounded-md font-semibold text-sm shadow-md hover:opacity-95 active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+                    Gerar Relatório Analítico (IA)
+                </button>
+</div>
+<!-- Top Cards Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Total Responses -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-transparent shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container rounded-lg text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Active Rate: 92%</span>
+</div>
+<div class="text-4xl font-headline font-extrabold text-on-surface">1,248</div>
+<div class="text-sm font-medium text-on-surface-variant mt-1">Total Responses</div>
+</div>
+<!-- Average Risk -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-transparent shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-fixed rounded-lg text-tertiary">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-tertiary text-on-tertiary text-[10px] font-bold uppercase tracking-tighter">Moderate Risk</div>
+</div>
+<div class="text-4xl font-headline font-extrabold text-tertiary">3.2<span class="text-lg text-on-surface-variant font-medium ml-1">/ 5.0</span></div>
+<div class="text-sm font-medium text-on-surface-variant mt-1">Average Risk Score</div>
+</div>
+<!-- Critical Items -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-transparent shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-error-container rounded-lg text-error">
+<span class="material-symbols-outlined">emergency_home</span>
+</div>
+<span class="text-xs font-bold text-error uppercase tracking-widest">+12% vs Setembro</span>
+</div>
+<div class="text-4xl font-headline font-extrabold text-on-surface">14</div>
+<div class="text-sm font-medium text-on-surface-variant mt-1">Critical Items Found</div>
+</div>
+</div>
+<!-- Charts Section (Asymmetric Grid) -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Risk Distribution (Donut Chart) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-8 rounded-xl border border-transparent shadow-sm flex flex-col">
+<h3 class="font-headline text-lg font-bold text-blue-900 mb-8">Risk Distribution</h3>
+<div class="relative w-48 h-48 mx-auto mb-8">
+<!-- SVG Donut Representation -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#ebeef4" stroke-width="3"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#6a2b00" stroke-dasharray="15 85" stroke-dashoffset="0" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#003d7c" stroke-dasharray="45 55" stroke-dashoffset="-15" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#505f75" stroke-dasharray="40 60" stroke-dashoffset="-60" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold font-headline">100%</span>
+<span class="text-[10px] text-on-surface-variant font-bold uppercase">Assessed</span>
+</div>
+</div>
+<div class="space-y-3 mt-auto">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary"></div>
+<span class="text-on-surface-variant">Critical Risk</span>
+</div>
+<span class="font-bold">15%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<span class="text-on-surface-variant">High/Med Risk</span>
+</div>
+<span class="font-bold">45%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<span class="text-on-surface-variant">Low Risk</span>
+</div>
+<span class="font-bold">40%</span>
+</div>
+</div>
+</div>
+<!-- Risk per Section (Bar Chart) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl border border-transparent shadow-sm">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline text-lg font-bold text-blue-900">Risk Severity per Department</h3>
+<div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+<span class="flex items-center gap-1"><div class="w-2 h-2 rounded bg-tertiary"></div> Critical</span>
+<span class="flex items-center gap-1"><div class="w-2 h-2 rounded bg-primary"></div> High</span>
+</div>
+</div>
+<div class="space-y-8">
+<!-- Logistics -->
+<div>
+<div class="flex justify-between text-xs font-bold mb-2 uppercase tracking-wide">
+<span>Logistics &amp; Transport</span>
+<span class="text-tertiary">4.8 Critical</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-tertiary" style="width: 85%"></div>
+<div class="h-full bg-primary/20" style="width: 15%"></div>
+</div>
+</div>
+<!-- Manufacturing -->
+<div>
+<div class="flex justify-between text-xs font-bold mb-2 uppercase tracking-wide">
+<span>Manufacturing</span>
+<span class="text-primary">3.2 Moderate</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 60%"></div>
+<div class="h-full bg-secondary-container" style="width: 40%"></div>
+</div>
+</div>
+<!-- Corporate -->
+<div>
+<div class="flex justify-between text-xs font-bold mb-2 uppercase tracking-wide">
+<span>Corporate Operations</span>
+<span class="text-secondary">1.4 Very Low</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary" style="width: 25%"></div>
+<div class="h-full bg-surface-variant" style="width: 75%"></div>
+</div>
+</div>
+<!-- Maintenance -->
+<div>
+<div class="flex justify-between text-xs font-bold mb-2 uppercase tracking-wide">
+<span>Facilities &amp; Maintenance</span>
+<span class="text-tertiary">4.1 Critical</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-tertiary" style="width: 72%"></div>
+<div class="h-full bg-primary/20" style="width: 28%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- List of Critical Items -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-transparent overflow-hidden">
+<div class="px-8 py-6 border-b border-surface-container flex justify-between items-center">
+<div>
+<h3 class="font-headline text-lg font-bold text-blue-900">Itens Críticos</h3>
+<p class="text-sm text-on-surface-variant">Prioritized actions for questions with Risk Score ≥ 4.0</p>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        Ver Todos <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="divide-y divide-surface-container-low">
+<!-- Item 1 -->
+<div class="px-8 py-5 flex items-center gap-6 hover:bg-surface-container-low/50 transition-colors">
+<div class="flex-shrink-0 w-12 h-12 bg-tertiary rounded-xl flex items-center justify-center text-on-tertiary font-bold font-headline">4.9</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Uso obrigatório de EPIs em áreas de alta tensão</h4>
+<p class="text-sm text-on-surface-variant">Ambiente: Logística Terminal A • Frequência: Crítica</p>
+</div>
+<div class="flex-shrink-0">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase">Immediate Action</span>
+</div>
+<button class="p-2 text-outline-variant hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="px-8 py-5 flex items-center gap-6 hover:bg-surface-container-low/50 transition-colors">
+<div class="flex-shrink-0 w-12 h-12 bg-tertiary rounded-xl flex items-center justify-center text-on-tertiary font-bold font-headline">4.5</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Sinalização de rotas de fuga obstruídas por estoque</h4>
+<p class="text-sm text-on-surface-variant">Ambiente: Armazém Central • Frequência: Alta</p>
+</div>
+<div class="flex-shrink-0">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase">Immediate Action</span>
+</div>
+<button class="p-2 text-outline-variant hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Item 3 -->
+<div class="px-8 py-5 flex items-center gap-6 hover:bg-surface-container-low/50 transition-colors">
+<div class="flex-shrink-0 w-12 h-12 bg-tertiary-container rounded-xl flex items-center justify-center text-on-tertiary-container font-bold font-headline">4.2</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Manutenção preventiva de maquinário de corte pesado</h4>
+<p class="text-sm text-on-surface-variant">Ambiente: Linha de Produção 04 • Frequência: Moderada</p>
+</div>
+<div class="flex-shrink-0">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase">Scheduled</span>
+</div>
+<button class="p-2 text-outline-variant hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Insight -->
+<div class="bg-primary/5 rounded-2xl p-8 flex items-center gap-8 border border-primary/10">
+<div class="flex-shrink-0 w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary mb-1 text-lg">Insight Estratégico (IA)</h4>
+<p class="text-on-surface-variant leading-relaxed">Observamos uma correlação de 78% entre a falta de treinamento específico e os itens críticos na Logística. Recomendamos a antecipação da reciclagem da NR-1 para as equipes do Terminal A nas próximas 72 horas para mitigar riscos ocupacionais iminentes.</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

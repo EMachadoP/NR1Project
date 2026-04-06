@@ -1,0 +1,110 @@
+# 03_SOURCE_OF_TRUTH.md
+
+## Objetivo Oficial
+Construir um MVP funcional do NR-1 Survey & Risk Manager para aplicação de questionários, cálculo automático de risco, geração de relatórios, criação de plano de ação e acompanhamento de indicadores, com foco em anonimato, rastreabilidade e rapidez operacional para RH e Segurança do Trabalho.
+
+## Escopo Final Consolidado
+O MVP inclui obrigatoriamente:
+- gestão de campanhas
+- questionários versionados
+- perguntas com scoring_direction obrigatório
+- acesso anônimo por token/QR
+- PWA para respondente
+- portal RH
+- cálculo automático de risco por item e por seção
+- classificação de risco por escala fixa
+- detecção de itens críticos
+- geração de relatório individual
+- geração de relatório analítico
+- plano de ação editável
+- indicadores de monitoramento
+- integração com IA para recomendações estruturadas
+
+## Decisões Fixas de Stack
+- frontend principal: Next.js + React + TypeScript + Tailwind
+- backend principal: API Routes/Server Functions + Supabase
+- banco padrão: Supabase Postgres
+- autenticação RH/Admin: Supabase Auth
+- armazenamento: Supabase Storage
+- deploy padrão: Vercel
+- IA: provider via endpoint seguro no backend
+- arquitetura de MVP sem microservices
+
+## Decisões Fixas de Arquitetura
+- anonimato é padrão no MVP
+- token anônimo é single-use e com expiração
+- cálculo de risco deve ser executado no backend
+- geração de relatório deve ser server-side
+- regras de classificação devem ser centralizadas em um único módulo de domínio
+- prompts nunca substituem documentos-base
+- toda implementação deve seguir este arquivo como referência máxima
+
+## Regras Obrigatórias
+- scoring_direction é obrigatório para toda pergunta publicada
+- perguntas positivas: risco = 6 - resposta
+- perguntas negativas: risco = resposta
+- item crítico: risco >= 4
+- classificação por seção:
+  - 1.0 a 1.5 = MUITO BAIXO
+  - 1.6 a 2.5 = BAIXO
+  - 2.6 a 3.5 = MÉDIO
+  - 3.6 a 4.5 = ALTO
+  - 4.6 a 5.0 = CRÍTICO
+- IA não pode diagnosticar condição médica
+- IA não pode atribuir culpa a pessoas
+- IA deve recomendar validação humana em risco alto/crítico
+- relatórios devem manter estrutura auditável
+- modo anônimo não pode armazenar nome, CPF, telefone ou matrícula
+
+## Restrições Conhecidas
+- não quebrar anonimato com filtros excessivos
+- evitar escopo de integrações automáticas no MVP
+- evitar segmentações avançadas que aumentem risco de reidentificação
+- evitar excesso de ferramentas para economizar tokens e preservar consistência
+- não usar arquitetura complexa sem necessidade real
+
+## Prioridades do MVP
+1. modelo de dados correto
+2. fluxo de resposta anônima
+3. cálculo e classificação de risco
+4. relatórios automáticos
+5. dashboard RH
+6. plano de ação
+7. indicadores
+8. IA estruturada com guardrails
+
+## Convenções
+- documentos oficiais em Markdown
+- nomenclatura de tabelas em snake_case
+- nomenclatura de código em inglês técnico
+- nomenclatura de telas em português do produto
+- datas em ISO no backend
+- payloads validados com schema
+- relatórios com templates versionados
+
+## Ambiguidades Resolvidas
+- anonimato será padrão no MVP
+- modo identificado não entra como prioridade de primeira implementação
+- cálculo de risco será centralizado no backend e não no frontend
+- IA será suporte à análise, não fonte decisória final
+- portal RH será web responsivo; app do respondente será PWA
+- geração de PDF será server-side
+- consolidado por campanha será prioritário antes de segmentações avançadas
+
+## Itens que Não Podem Mudar sem Revisão
+- fórmula de normalização de risco
+- escala de classificação
+- anonimato como padrão
+- stack base Next.js + Supabase + Vercel
+- uso de Source of Truth como documento máximo
+- obrigação de scoring_direction por pergunta
+- guardrails da IA
+- plano de ação editável com histórico
+
+## Ordem de Prioridade entre Documentos
+1. 03_SOURCE_OF_TRUTH.md
+2. 02_SDD.md
+3. 01_PRD.md
+
+## Orientação para Todas as Ferramentas
+Toda ferramenta, agente ou IA usada no projeto deve seguir este arquivo como referência máxima. Em caso de conflito, este documento prevalece. Toda nova decisão relevante deve atualizar primeiro este arquivo antes de alterar prompts, backlog, código ou arquitetura.

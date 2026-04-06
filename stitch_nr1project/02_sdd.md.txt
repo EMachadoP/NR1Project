@@ -1,0 +1,236 @@
+# 02_SDD.md
+
+## Visão Técnica Resumida
+A solução será construída como uma aplicação web moderna com frontend em Next.js, backend apoiado em Supabase e funções server-side para regras críticas, relatórios e integração com IA. O sistema prioriza simplicidade de implementação, segurança, anonimato e rastreabilidade.
+
+## Arquitetura Sugerida
+Arquitetura full-stack web com:
+- frontend PWA para respondente
+- frontend web administrativo para RH/Admin/Gestores
+- backend via API Routes e/ou Edge Functions
+- Postgres para persistência
+- Storage para PDFs e arquivos
+- integração segura com provedor de IA
+- geração server-side de PDFs
+
+### Camadas
+1. Interface
+2. Aplicação / regras de negócio
+3. Persistência
+4. Integrações externas
+5. Auditoria e observabilidade
+
+## Stack Técnica
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Supabase Postgres
+- Supabase Auth
+- Supabase Storage
+- Vercel
+- OpenAI API
+- biblioteca de geração HTML → PDF
+- QR code generator
+- Zod para validação de payloads
+- TanStack Query opcional para dados no portal
+
+## Módulos Principais
+- módulo de autenticação e RBAC
+- módulo de questionários
+- módulo de campanhas
+- módulo de tokens/QR
+- módulo de respostas
+- módulo de cálculo de risco
+- módulo de consolidação analítica
+- módulo de relatórios
+- módulo de plano de ação
+- módulo de indicadores
+- módulo de integração IA
+- módulo de auditoria
+
+## Entidades Principais
+
+### campaigns
+- id
+- nome
+- setor
+- unidade
+- questionnaire_id
+- idioma
+- status
+- data_inicio
+- data_fim
+- created_by
+- created_at
+
+### questionnaires
+- id
+- nome
+- versao
+- status
+- created_at
+
+### sections
+- id
+- questionnaire_id
+- nome
+- ordem
+
+### questions
+- id
+- section_id
+- texto
+- ordem
+- tipo_resposta
+- scoring_direction
+- peso
+- obrigatoria
+- ativa
+
+### tokens
+- id
+- campaign_id
+- token
+- status
+- expires_at
+- used_at
+- created_at
+
+### responses
+- id
+- campaign_id
+- token_id
+- respondent_id
+- mode
+- observation_text
+- created_at
+
+### response_items
+- id
+- response_id
+- question_id
+- answer_raw
+- risk_value
+
+### analysis_results
+- id
+- response_id
+- campaign_id
+- analysis_scope
+- section_summary_json
+- critical_items_json
+- created_at
+
+### action_plans
+- id
+- campaign_id
+- risco_identificado
+- secao
+- causa_raiz
+- medida
+- responsavel
+- prazo
+- status
+- origem
+- created_at
+- updated_at
+
+### monitoring_indicators
+- id
+- campaign_id
+- periodo
+- indicador
+- periodo_anterior
+- periodo_atual
+- meta
+- variacao
+- acao
+- created_at
+
+### audit_logs
+- id
+- actor_id
+- actor_role
+- entity_type
+- entity_id
+- action
+- before_json
+- after_json
+- created_at
+
+## Fluxos Principais
+
+### Fluxo 1 — Criação de campanha
+1. RH/Admin cria campanha
+2. seleciona questionário, período, setor e unidade
+3. sistema gera tokens/QR
+4. campanha fica disponível para coleta
+
+### Fluxo 2 — Resposta anônima
+1. respondente acessa token/QR
+2. sistema valida token e prazo
+3. exibe termo e questionário
+4. usuário responde
+5. sistema normaliza risco por item
+6. sistema salva resposta
+7. sistema gera relatório individual
+8. sistema atualiza consolidado da campanha
+
+### Fluxo 3 — Análise RH
+1. RH acessa dashboard da campanha
+2. visualiza médias por seção
+3. visualiza itens críticos
+4. solicita relatório analítico
+5. sistema aplica regras fixas
+6. backend consulta IA com payload estruturado
+7. sistema monta plano de ação inicial editável
+
+### Fluxo 4 — Gestão de plano de ação
+1. RH revisa ações sugeridas
+2. define responsáveis e prazos
+3. atualiza status
+4. sistema registra audit log
+
+### Fluxo 5 — Indicadores
+1. RH registra período
+2. informa valores anteriores, atuais e metas
+3. sistema calcula variação
+4. sistema sugere necessidade de ação
+
+## Autenticação
+- respondente anônimo: acesso por token único, single-use e expiração
+- RH/Admin/Gestor: Supabase Auth
+- RBAC mínimo:
+  - Respondente: apenas preenchimento
+  - RH/Segurança: campanhas, análises, ações, indicadores
+  - Gestor/Diretoria: leitura consolidada e acompanhamento
+  - Admin: configuração completa
+
+## Banco
+Banco relacional Postgres com:
+- integridade referencial
+- constraints para status válidos
+- índices em campaign_id, questionnaire_id, token, created_at
+- policies de acesso por perfil
+- anonimização por design no modo anônimo
+
+## Integrações
+- OpenAI API para recomendações estruturadas em JSON
+- geração de PDF server-side
+- gerador de QR
+- exportação CSV/Excel
+
+## Deploy
+- frontend e server functions em Vercel
+- banco e auth em Supabase
+- storage em Supabase Storage
+- ambientes: dev, staging e production
+
+## Observações Técnicas
+- scoring_direction deve ser obrigatório ao publicar questionário
+- cálculo de risco deve acontecer no backend para garantir consistência
+- relatórios devem ser gerados com templates versionados
+- respostas anônimas não devem armazenar identificadores pessoais
+- dashboard consolidado deve bloquear filtros que quebrem anonimato
+- IA deve operar com payload controlado e guardrails estritos
