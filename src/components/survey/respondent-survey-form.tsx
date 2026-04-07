@@ -9,6 +9,12 @@ type SurveyQuestion = {
   answerType: string;
   orderIndex: number;
   isRequired: boolean;
+  hazardCode: number | null;
+  sourceReference: string | null;
+  severityScore: number | null;
+  severityLabel: string | null;
+  circumstancesText: string | null;
+  outcomesText: string | null;
 };
 
 type SurveySection = {
@@ -22,6 +28,14 @@ type RespondentSurveyFormProps = {
   token: string;
   sections: SurveySection[];
 };
+
+const scaleLabels = [
+  { value: 1, label: "Nao ocorre" },
+  { value: 2, label: "Baixo" },
+  { value: 3, label: "Moderado" },
+  { value: 4, label: "Alto" },
+  { value: 5, label: "Critico" }
+];
 
 export function RespondentSurveyForm({ token, sections }: RespondentSurveyFormProps) {
   const router = useRouter();
@@ -77,8 +91,16 @@ export function RespondentSurveyForm({ token, sections }: RespondentSurveyFormPr
           <div className="h-2 rounded-full bg-gradient-to-r from-accent to-sky-700" style={{ width: `${(answeredRequiredQuestions / Math.max(totalRequiredQuestions, 1)) * 100}%` }} />
         </div>
         <p className="mt-4 text-sm leading-7 text-slate-600">
-          Perguntas opcionais podem ser deixadas em branco e nao entram no calculo oficial da media da secao.
+          Avalie cada perigo psicossocial conforme a presenca ou intensidade percebida no seu trabalho. Perguntas opcionais podem ser deixadas em branco e nao entram no calculo oficial da media da secao.
         </p>
+        <div className="mt-4 grid gap-3 rounded-2xl bg-slate-50 p-4 md:grid-cols-5">
+          {scaleLabels.map((item) => (
+            <div key={item.value} className="rounded-xl bg-white px-3 py-3 text-center shadow-sm">
+              <p className="text-lg font-semibold text-sky-950">{item.value}</p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       {sections.map((section) => (
@@ -90,12 +112,40 @@ export function RespondentSurveyForm({ token, sections }: RespondentSurveyFormPr
 
           {section.questions.map((question) => (
             <div key={question.id} className="rounded-2xl bg-slate-50 p-5">
-              <div className="flex items-start justify-between gap-4">
-                <p className="text-lg font-medium text-ink">{question.prompt}</p>
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
+                    {question.hazardCode ? <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700">Perigo {question.hazardCode}</span> : null}
+                    {question.sourceReference ? <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">{question.sourceReference}</span> : null}
+                    {question.severityLabel ? <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">{question.severityLabel.split(" ")[0]}</span> : null}
+                  </div>
+                  <p className="text-lg font-medium text-ink">{question.prompt}</p>
+                </div>
                 <span className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${question.isRequired ? "bg-slate-900 text-white" : "bg-slate-200 text-slate-700"}`}>
                   {question.isRequired ? "Obrigatoria" : "Opcional"}
                 </span>
               </div>
+
+              {question.circumstancesText || question.outcomesText ? (
+                <details className="mt-4 rounded-2xl bg-white p-4">
+                  <summary className="cursor-pointer text-sm font-semibold text-sky-800">Contexto tecnico do perigo</summary>
+                  <div className="mt-3 space-y-3 text-sm leading-7 text-slate-600">
+                    {question.circumstancesText ? (
+                      <div>
+                        <p className="font-semibold text-slate-800">Fontes e circunstancias</p>
+                        <p>{question.circumstancesText}</p>
+                      </div>
+                    ) : null}
+                    {question.outcomesText ? (
+                      <div>
+                        <p className="font-semibold text-slate-800">Possiveis agravos</p>
+                        <p>{question.outcomesText}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                </details>
+              ) : null}
+
               <div className="mt-4 grid grid-cols-5 gap-2">
                 {[1, 2, 3, 4, 5].map((value) => {
                   const selected = answers[question.id] === value;

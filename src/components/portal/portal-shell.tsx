@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type { Route } from "next";
 import { signOutAction } from "@/lib/server/services/auth-actions";
-import type { PortalSession } from "@/lib/auth/session";
+import type { PortalRole, PortalSession } from "@/lib/auth/session";
 
-const links: Array<{ href: Route; label: string }> = [
+const links: Array<{ href: Route; label: string; visibleFor?: PortalRole[] }> = [
   { href: "/campanhas", label: "Campanhas" },
   { href: "/plano-de-acao", label: "Plano de acao" },
-  { href: "/indicadores", label: "Indicadores" }
+  { href: "/indicadores", label: "Indicadores" },
+  { href: "/questionarios", label: "Questionarios", visibleFor: ["admin", "hr"] }
 ];
 
 type PortalShellProps = {
@@ -17,6 +18,8 @@ type PortalShellProps = {
 };
 
 export function PortalShell({ session, title, description, children }: PortalShellProps) {
+  const visibleLinks = links.filter((link) => !link.visibleFor || link.visibleFor.includes(session.role));
+
   return (
     <main className="min-h-screen bg-[#f7f9ff] text-slate-900">
       <div className="flex min-h-screen">
@@ -26,7 +29,7 @@ export function PortalShell({ session, title, description, children }: PortalShe
             <h1 className="mt-2 text-2xl font-semibold text-sky-950">Risk Manager</h1>
           </div>
           <nav className="mt-10 space-y-2">
-            {links.map((link) => (
+            {visibleLinks.map((link) => (
               <Link key={link.href} href={link.href} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-white">
                 {link.label}
               </Link>

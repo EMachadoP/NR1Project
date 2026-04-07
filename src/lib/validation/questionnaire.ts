@@ -10,7 +10,15 @@ export const questionnaireQuestionSchema = z.object({
   weight: z.number().positive().default(1),
   isRequired: z.boolean().default(true),
   isActive: z.boolean().default(true),
-  orderIndex: z.number().int().nonnegative()
+  orderIndex: z.number().int().nonnegative(),
+  hazardCode: z.number().int().positive().optional(),
+  sourceReference: z.string().min(1).optional(),
+  severityScore: z.number().int().positive().optional(),
+  severityLabel: z.string().min(1).optional(),
+  circumstancesText: z.string().min(1).optional(),
+  outcomesText: z.string().min(1).optional(),
+  recommendedActionsText: z.string().min(1).optional(),
+  monitoringGuidanceText: z.string().min(1).optional()
 });
 
 export const questionnaireSectionSchema = z.object({

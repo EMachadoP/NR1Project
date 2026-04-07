@@ -23,6 +23,12 @@ export type PublicQuestionnairePayload = {
       answerType: string;
       orderIndex: number;
       isRequired: boolean;
+      hazardCode: number | null;
+      sourceReference: string | null;
+      severityScore: number | null;
+      severityLabel: string | null;
+      circumstancesText: string | null;
+      outcomesText: string | null;
     }>;
   }>;
   questionRiskInputs: QuestionRiskInput[];
@@ -91,7 +97,7 @@ export async function findActiveTokenBundle(rawToken: string): Promise<PublicQue
 
   const { data: questions, error: questionsError } = await supabase
     .from("questionnaire_questions")
-    .select("id, section_id, prompt, answer_type, order_index, is_required, scoring_direction, weight, is_active")
+    .select("id, section_id, prompt, answer_type, order_index, is_required, scoring_direction, weight, is_active, hazard_code, source_reference, severity_score, severity_label, circumstances_text, outcomes_text")
     .in("section_id", sectionIds.length > 0 ? sectionIds : ["00000000-0000-0000-0000-000000000000"])
     .eq("is_active", true)
     .order("order_index", { ascending: true });
@@ -122,7 +128,13 @@ export async function findActiveTokenBundle(rawToken: string): Promise<PublicQue
           prompt: question.prompt,
           answerType: question.answer_type,
           orderIndex: question.order_index,
-          isRequired: question.is_required
+          isRequired: question.is_required,
+          hazardCode: question.hazard_code ?? null,
+          sourceReference: question.source_reference ?? null,
+          severityScore: question.severity_score ?? null,
+          severityLabel: question.severity_label ?? null,
+          circumstancesText: question.circumstances_text ?? null,
+          outcomesText: question.outcomes_text ?? null
         }))
     })),
     questionRiskInputs: (questions ?? []).map((question) => ({
