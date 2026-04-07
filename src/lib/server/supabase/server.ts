@@ -18,9 +18,16 @@ export async function createServerSupabaseClient() {
         return cookieStore.getAll();
       },
       setAll(cookiesToSet: CookieToSet[]) {
-        cookiesToSet.forEach(({ name, value, options }) => {
-          cookieStore.set(name, value, options);
-        });
+        // Supabase SSR can attempt to refresh auth cookies during a Server
+        // Component render. Next.js rejects cookie writes in that context,
+        // so we ignore those writes and let actions/routes own mutation.
+        try {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookieStore.set(name, value, options);
+          });
+        } catch {
+          // no-op
+        }
       }
     }
   });
