@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type Questionnaire = { id: string; name: string; version: string };
 
@@ -201,12 +202,12 @@ export function CampaignForm({ questionnaires }: { questionnaires: Questionnaire
 
         {/* Footer actions */}
         <div className="flex items-center justify-end gap-3 border-t border-line px-6 py-4">
-          <a
+          <Link
             href="/campanhas"
             className="rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50"
           >
             Cancelar
-          </a>
+          </Link>
           <button
             type="submit"
             disabled={submitting || questionnaires.length === 0}
