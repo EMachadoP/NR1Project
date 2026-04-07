@@ -11,6 +11,7 @@ export type PortalSession = {
 
 import { redirect } from "next/navigation";
 import { assertRole } from "@/lib/auth/authorization";
+import { createAdminSupabaseClient } from "@/lib/server/supabase/admin";
 import { createServerSupabaseClient } from "@/lib/server/supabase/server";
 
 export async function getPortalSession(): Promise<PortalSession | null> {
@@ -23,7 +24,10 @@ export async function getPortalSession(): Promise<PortalSession | null> {
     return null;
   }
 
-  const { data: profile } = await supabase
+  // Use admin client so the profile query bypasses RLS and PostgREST schema
+  // cache issues — profile data is trusted server-side only.
+  const adminSupabase = createAdminSupabaseClient();
+  const { data: profile } = await adminSupabase
     .from("profiles")
     .select("role, display_name, sector, unit")
     .eq("id", user.id)
