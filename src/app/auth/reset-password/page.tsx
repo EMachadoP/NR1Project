@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/server/supabase/client";
 import { updatePasswordSchema } from "@/lib/validation/auth";
 
 type RecoveryState = "loading" | "ready" | "invalid" | "success";
 
 export default function ResetPasswordPage() {
-  const supabase = useMemo(() => createClient(), []);
+  const [supabase, setSupabase] = useState<SupabaseClient | null>(null);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [state, setState] = useState<RecoveryState>("loading");
@@ -18,15 +19,22 @@ export default function ResetPasswordPage() {
     let mounted = true;
 
     async function bootstrapRecoverySession() {
-      const hash = typeof window !== "undefined" ? window.location.hash.replace(/^#/, "") : "";
-      const hashParams = new URLSearchParams(hash);
-      const accessToken = hashParams.get("access_token");
-      const refreshToken = hashParams.get("refresh_token");
-      const type = hashParams.get("type");
-
       try {
+        const client = createClient();
+        if (!mounted) {
+          return;
+        }
+
+        setSupabase(client);
+
+        const hash = typeof window !== "undefined" ? window.location.hash.replace(/^#/, "") : "";
+        const hashParams = new URLSearchParams(hash);
+        const accessToken = hashParams.get("access_token");
+        const refreshToken = hashParams.get("refresh_token");
+        const type = hashParams.get("type");
+
         if (type === "recovery" && accessToken && refreshToken) {
-          const { error: sessionError } = await supabase.auth.setSession({
+          const { error: sessionError } = await client.auth.setSession({
             access_token: accessToken,
             refresh_token: refreshToken
           });
@@ -44,7 +52,7 @@ export default function ResetPasswordPage() {
 
         const {
           data: { session }
-        } = await supabase.auth.getSession();
+        } = await client.auth.getSession();
 
         if (mounted) {
           setState(session ? "ready" : "invalid");
@@ -62,7 +70,7 @@ export default function ResetPasswordPage() {
     return () => {
       mounted = false;
     };
-  }, [supabase]);
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -71,6 +79,11 @@ export default function ResetPasswordPage() {
     const parsed = updatePasswordSchema.safeParse({ password, confirmPassword });
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Dados invalidos.");
+      return;
+    }
+
+    if (!supabase) {
+      setError("Sessao de recuperacao indisponivel. Solicite um novo link.");
       return;
     }
 
