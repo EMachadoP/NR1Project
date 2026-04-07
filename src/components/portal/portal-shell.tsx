@@ -33,7 +33,8 @@ const links: Array<{ href: Route; label: string; icon: React.ReactNode; visibleF
   { href: "/campanhas", label: "Campanhas", icon: <IconCampaigns /> },
   { href: "/plano-de-acao", label: "Plano de ação", icon: <IconActionPlan /> },
   { href: "/indicadores", label: "Indicadores", icon: <IconIndicators /> },
-  { href: "/questionarios", label: "Questionários", icon: <IconQuestionnaires />, visibleFor: ["admin", "hr"] }
+  { href: "/questionarios", label: "Questionários", icon: <IconQuestionnaires />, visibleFor: ["admin", "hr"] },
+  { href: "/admin/questionarios" as Route, label: "Gerir Questionários", icon: <IconQuestionnaires />, visibleFor: ["admin"] }
 ];
 
 const roleLabels: Record<PortalRole, string> = {
@@ -129,3 +130,4 @@ export function PortalShell({ session, eyebrow, title, description, action, chil
     </div>
   );
 }
+

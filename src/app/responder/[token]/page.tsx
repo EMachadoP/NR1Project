@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { forbidden } from "next/navigation";
 import { RespondentSurveyForm } from "@/components/survey/respondent-survey-form";
 import { getRespondentQuestionnaire } from "@/lib/server/services/submission-service";
 
@@ -7,12 +7,11 @@ export default async function RespondentSurveyPage({ params }: { params: Promise
   const payload = await getRespondentQuestionnaire(token);
 
   if (!payload) {
-    notFound();
+    forbidden();
   }
 
   return (
     <main className="min-h-screen bg-canvas">
-      {/* PWA top bar */}
       <div className="sticky top-0 z-20 border-b border-line bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2.5">
@@ -32,7 +31,6 @@ export default async function RespondentSurveyPage({ params }: { params: Promise
         </div>
       </div>
 
-      {/* Content */}
       <div className="mx-auto max-w-2xl px-4 pb-10 pt-5">
         <div className="mb-5 rounded-xl border border-line bg-white p-5 shadow-card">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Questionário</p>

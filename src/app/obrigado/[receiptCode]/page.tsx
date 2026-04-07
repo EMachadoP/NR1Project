@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getReceiptTtlDays, isReceiptExpired } from "@/lib/domain/receipts/policy";
 import { getPublicReceipt } from "@/lib/server/services/report-service";
+import { ReportDownloadButton } from "./report-download-button";
 
 const reportStatusConfig = {
   done:    { label: "Gerado",   icon: "✓", className: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200" },
@@ -62,6 +63,10 @@ export default async function ThankYouPage({ params }: { params: Promise<{ recei
               <span className="font-medium text-ink">{new Date(receipt.receiptExpiresAt).toLocaleDateString("pt-BR")}</span>
             </div>
           </div>
+
+          {receipt.reportStatus === "done" && receipt.reportId && (
+            <ReportDownloadButton receiptCode={receipt.receiptCode} />
+          )}
         </div>
 
         {/* Anonymity note */}
@@ -77,3 +82,4 @@ export default async function ThankYouPage({ params }: { params: Promise<{ recei
     </main>
   );
 }
+

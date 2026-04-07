@@ -1,5 +1,13 @@
 import { NextResponse } from "next/server";
 
+export function getPublicSubmissionErrorStatus(message: string) {
+  return message === "INVALID_OR_EXPIRED_TOKEN" ? 403 : 500;
+}
+
+export function isCampaignQuestionnaireStatusAllowed(status: string | null | undefined) {
+  return status === "published";
+}
+
 export function toApiErrorResponse(error: unknown, fallbackMessage = "REQUEST_FAILED") {
   const message = error instanceof Error ? error.message : fallbackMessage;
 

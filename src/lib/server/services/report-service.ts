@@ -1,5 +1,6 @@
 import { assertCampaignScope, assertInternalReportAccess } from "@/lib/auth/authorization";
 import type { PortalSession } from "@/lib/auth/session";
+import { isReceiptExpired } from "@/lib/domain/receipts/policy";
 import type { AnalyticalReportData, IndividualReportData } from "@/lib/domain/reports/types";
 import { getCampaign } from "@/lib/server/repositories/campaigns-repository";
 import { REPORT_TEMPLATE_VERSION, renderAnalyticalReportHtml, renderIndividualReportHtml } from "@/lib/server/pdf/report-templates";
@@ -108,6 +109,31 @@ export async function getInternalReportLink(reportId: string, actor: PortalSessi
   }
 
   const finalReport = await processGeneratedReport(reportId);
+
+  if (finalReport.status !== "done" || !finalReport.storage_path) {
+    throw new Error(finalReport.error_message ?? "REPORT_NOT_READY");
+  }
+
+  const signedUrl = await createSignedReportUrl(finalReport.storage_path);
+
+  return {
+    report: finalReport,
+    signedUrl
+  };
+}
+
+export async function getPublicReportLink(receiptCode: string) {
+  const receipt = await getPublicReceiptData(receiptCode);
+
+  if (!receipt || isReceiptExpired(receipt.receiptExpiresAt)) {
+    throw new Error("UNAUTHORIZED");
+  }
+
+  if (!receipt.reportId) {
+    throw new Error("REPORT_NOT_READY");
+  }
+
+  const finalReport = await processGeneratedReport(receipt.reportId);
 
   if (finalReport.status !== "done" || !finalReport.storage_path) {
     throw new Error(finalReport.error_message ?? "REPORT_NOT_READY");

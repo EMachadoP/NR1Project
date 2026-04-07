@@ -336,6 +336,22 @@ export async function getPublicReceiptData(receiptCode: string): Promise<PublicR
     receiptExpiresAt: submission.receipt_expires_at,
     campaignName: campaign?.name ?? "Campanha",
     questionnaireName: questionnaire?.name ?? "Questionario",
-    reportStatus: report?.status ?? null
+    reportStatus: report?.status ?? null,
+    reportId: report?.id ?? null
   };
+}
+
+export async function getLatestAnalyticalReportByCampaignId(campaignId: string) {
+  const supabase = createAdminSupabaseClient();
+  const { data, error } = await supabase
+    .from("generated_reports")
+    .select("id, status, error_message, requested_at, generated_at")
+    .eq("campaign_id", campaignId)
+    .eq("report_type", "campaign_analytical")
+    .order("requested_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data;
 }

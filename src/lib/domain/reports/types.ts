@@ -96,4 +96,5 @@ export type PublicReceiptData = {
   campaignName: string;
   questionnaireName: string;
   reportStatus: GeneratedReportStatus | null;
+  reportId: string | null;
 };

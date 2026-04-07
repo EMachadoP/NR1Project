@@ -2,6 +2,9 @@ import Link from "next/link";
 import { PortalShell } from "@/components/portal/portal-shell";
 import { requirePortalSession } from "@/lib/auth/session";
 import { getCampaignDashboardService } from "@/lib/server/services/dashboard-service";
+import { getLatestAnalyticalReportByCampaignId } from "@/lib/server/repositories/reports-repository";
+import { TokenGenerator } from "./token-generator";
+import { ReportPanel } from "./report-panel";
 
 type RiskLevel = "MUITO BAIXO" | "BAIXO" | "MÉDIO" | "ALTO" | "CRÍTICO";
 
@@ -28,7 +31,10 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
   const { id } = await params;
 
   try {
-    const dashboard = await getCampaignDashboardService(id, session);
+    const [dashboard, analyticalReport] = await Promise.all([
+      getCampaignDashboardService(id, session),
+      (session.role === "admin" || session.role === "hr") ? getLatestAnalyticalReportByCampaignId(id) : null
+    ]);
 
     if (dashboard.summary.anonymity.blocked) {
       return (
@@ -203,6 +209,18 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
             </section>
           </div>
         </div>
+
+        {(session.role === "admin" || session.role === "hr") && (
+          <div className="mt-6 space-y-4">
+            <ReportPanel
+              campaignId={dashboard.campaign.id}
+              initialReport={analyticalReport ? { id: analyticalReport.id, status: analyticalReport.status } : null}
+            />
+            {session.role === "admin" && (
+              <TokenGenerator campaignId={dashboard.campaign.id} />
+            )}
+          </div>
+        )}
       </PortalShell>
     );
   } catch {

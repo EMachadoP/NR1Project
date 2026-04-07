@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { submitAnonymousResponse } from "@/lib/server/services/submission-service";
+import { getPublicSubmissionErrorStatus } from "@/lib/server/http/errors";
 
 export async function POST(request: Request) {
   try {
@@ -8,7 +9,7 @@ export async function POST(request: Request) {
     return NextResponse.json(item, { status: 201 });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to submit survey.";
-    const status = message === "INVALID_OR_EXPIRED_TOKEN" ? 400 : 500;
+    const status = getPublicSubmissionErrorStatus(message);
     return NextResponse.json({ error: message }, { status });
   }
 }

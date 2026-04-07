@@ -5,7 +5,7 @@ import type { QuestionRiskInput } from "@/lib/domain/risk/types";
 import { createReceiptCode } from "@/lib/server/crypto";
 import { getCampaignDashboardSummary, listResponseRiskInputsByCampaign } from "@/lib/server/repositories/analytics-repository";
 import { findActiveTokenBundle } from "@/lib/server/repositories/respondent-repository";
-import { enqueueIndividualReport } from "@/lib/server/services/report-service";
+import { enqueueIndividualReport, processGeneratedReport } from "@/lib/server/services/report-service";
 import { createAdminSupabaseClient } from "@/lib/server/supabase/admin";
 import { anonymousSubmissionSchema, type AnonymousSubmissionInput } from "@/lib/validation/submission";
 import { randomUUID } from "node:crypto";
@@ -56,8 +56,7 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
     mode: "anonymous",
     observation_text: safeObservationText,
     receipt_code: receiptCode,
-    receipt_expires_at: receiptExpiresAt,
-    analysis_version: "v1"
+    receipt_expires_at: receiptExpiresAt
   });
 
   if (submissionError) throw submissionError;
@@ -107,11 +106,13 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
   });
 
   let reportRequestId: string | null = null;
-  let reportStatus: "pending" | "failed" = "pending";
+  let reportStatus: "pending" | "failed" | "done" = "pending";
 
   try {
     const pendingReport = await enqueueIndividualReport(submissionId);
     reportRequestId = pendingReport.id;
+    const generatedReport = await processGeneratedReport(pendingReport.id);
+    reportStatus = generatedReport.status;
   } catch {
     reportStatus = "failed";
   }

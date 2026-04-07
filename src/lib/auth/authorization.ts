@@ -16,11 +16,11 @@ export const ADMIN_ENDPOINT_ACCESS_MATRIX: AdminEndpointRule[] = [
   { method: "GET", path: "/api/admin/campaigns/[id]/analytics", allowedRoles: ["admin", "hr", "manager"], scope: "campaign_scope", notes: "Analytics consolidado respeita escopo do Gestor." },
   { method: "POST", path: "/api/admin/campaigns/[id]/report", allowedRoles: ["admin", "hr", "manager"], scope: "campaign_scope", notes: "Gestor pode gerar apenas relatorio analitico da propria campanha." },
   { method: "POST", path: "/api/admin/campaigns/[id]/tokens", allowedRoles: ["admin", "hr"], scope: "global", notes: "Emissao de tokens e operacao administrativa." },
-  { method: "GET", path: "/api/admin/questionnaires", allowedRoles: ["admin", "hr"], scope: "global", notes: "Questionarios nao ficam expostos ao Gestor no backend." },
-  { method: "POST", path: "/api/admin/questionnaires", allowedRoles: ["admin", "hr"], scope: "global", notes: "Criacao de questionario restrita a Admin/RH." },
-  { method: "GET", path: "/api/admin/questionnaires/[id]", allowedRoles: ["admin", "hr"], scope: "global", notes: "Detalhe de questionario restrito a Admin/RH." },
-  { method: "PATCH", path: "/api/admin/questionnaires/[id]", allowedRoles: ["admin", "hr"], scope: "global", notes: "Edicao de questionario restrita a Admin/RH." },
-  { method: "POST", path: "/api/admin/questionnaires/[id]/publish", allowedRoles: ["admin", "hr"], scope: "global", notes: "Publicacao restrita a Admin/RH." },
+  { method: "GET", path: "/api/admin/questionnaires", allowedRoles: ["admin"], scope: "global", notes: "Questionarios administrativos ficam restritos a Admin." },
+  { method: "POST", path: "/api/admin/questionnaires", allowedRoles: ["admin"], scope: "global", notes: "Criacao de questionario restrita a Admin." },
+  { method: "GET", path: "/api/admin/questionnaires/[id]", allowedRoles: ["admin"], scope: "global", notes: "Detalhe de questionario restrito a Admin." },
+  { method: "PATCH", path: "/api/admin/questionnaires/[id]", allowedRoles: ["admin"], scope: "global", notes: "Edicao de questionario restrita a Admin." },
+  { method: "POST", path: "/api/admin/questionnaires/[id]/publish", allowedRoles: ["admin"], scope: "global", notes: "Publicacao restrita a Admin." },
   { method: "GET", path: "/api/admin/action-plans", allowedRoles: ["admin", "hr", "manager"], scope: "campaign_scope", notes: "Gestor pode consultar planos apenas nas campanhas do proprio escopo." },
   { method: "POST", path: "/api/admin/action-plans", allowedRoles: ["admin", "hr"], scope: "global", notes: "Criacao de plano e restrita a Admin/RH." },
   { method: "PATCH", path: "/api/admin/action-plans/[id]", allowedRoles: ["admin", "hr"], scope: "global", notes: "Edicao de plano e restrita a Admin/RH." },
@@ -101,3 +101,4 @@ export function assertInternalReportAccess(session: PortalSession, report: { rep
 
   return report;
 }
+
