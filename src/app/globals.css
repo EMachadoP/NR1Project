@@ -3,14 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --color-canvas: #f7f9ff;
-  --color-ink: #181c20;
-  --color-accent: #003d7c;
-  --color-success: #3b7a57;
-  --color-warning: #8f3c00;
-  --color-danger: #ba1a1a;
-  --color-muted: #56657b;
-  --color-line: rgba(194, 198, 211, 0.4);
+  --color-canvas: #f8fafc;
+  --color-sidebar: #0f172a;
+  --color-ink: #0f172a;
+  --color-ink-2: #475569;
+  --color-accent: #2563eb;
+  --color-accent-light: #eff6ff;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+
+  /* Risk classification */
+  --risk-muito-baixo: #059669;
+  --risk-muito-baixo-bg: #ecfdf5;
+  --risk-baixo: #0d9488;
+  --risk-baixo-bg: #f0fdfa;
+  --risk-medio: #d97706;
+  --risk-medio-bg: #fffbeb;
+  --risk-alto: #ea580c;
+  --risk-alto-bg: #fff7ed;
+  --risk-critico: #dc2626;
+  --risk-critico-bg: #fef2f2;
 }
 
 * {
@@ -24,19 +39,20 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f7f9ff 0%, #eef3fb 100%);
+  background-color: var(--color-canvas);
   color: var(--color-ink);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-headline), sans-serif;
+h1, h2, h3, h4 {
+  font-family: var(--font-headline), var(--font-body), system-ui, sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
 }

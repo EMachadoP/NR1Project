@@ -4,6 +4,27 @@ import { PortalShell } from "@/components/portal/portal-shell";
 import { requirePortalSession } from "@/lib/auth/session";
 import { listCampaignsService } from "@/lib/server/services/dashboard-service";
 
+const statusConfig: Record<string, { label: string; className: string }> = {
+  active: { label: "Ativa", className: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200" },
+  scheduled: { label: "Agendada", className: "bg-blue-50 text-blue-700 ring-1 ring-blue-200" },
+  closed: { label: "Encerrada", className: "bg-slate-100 text-slate-600 ring-1 ring-slate-200" },
+  draft: { label: "Rascunho", className: "bg-amber-50 text-amber-700 ring-1 ring-amber-200" }
+};
+
+function StatusBadge({ status }: { status: string }) {
+  const config = statusConfig[status] ?? { label: status, className: "bg-slate-100 text-slate-600 ring-1 ring-slate-200" };
+  return (
+    <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${config.className}`}>
+      {config.label}
+    </span>
+  );
+}
+
+function formatDate(date: string | null) {
+  if (!date) return "—";
+  return new Date(date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
+}
+
 export default async function CampaignsPage() {
   const session = await requirePortalSession();
   const campaigns = await listCampaignsService(session);
@@ -11,23 +32,47 @@ export default async function CampaignsPage() {
   return (
     <PortalShell
       session={session}
+      eyebrow="Gestão"
       title="Campanhas"
-      description="Acompanhe adesao, risco consolidado e acesso aos modulos operacionais por campanha."
+      description="Acompanhe adesão, risco consolidado e módulos operacionais por campanha."
     >
       {campaigns.length === 0 ? (
         <EmptyPortalState
-          eyebrow="Portal RH"
-          title="Nenhuma campanha disponivel"
-          description="O portal esta autenticado, mas ainda nao existem campanhas cadastradas no ambiente. Cadastre ou carregue as campanhas iniciais para liberar o fluxo operacional."
+          eyebrow="Campanhas"
+          title="Nenhuma campanha encontrada"
+          description="Não existem campanhas cadastradas no ambiente. Crie a primeira campanha para iniciar o fluxo de coleta anônima."
         />
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {campaigns.map((campaign) => (
-            <Link key={campaign.id} href={`/campanhas/${campaign.id}`} className="rounded-2xl bg-white p-6 shadow-panel transition hover:-translate-y-1">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">{campaign.status}</p>
-              <h3 className="mt-3 text-2xl font-semibold text-sky-950">{campaign.name}</h3>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{campaign.sector ?? "Setor nao informado"} · {campaign.unit ?? "Unidade nao informada"}</p>
-              <p className="mt-4 text-sm text-slate-500">{campaign.start_date} ate {campaign.end_date}</p>
+            <Link
+              key={campaign.id}
+              href={`/campanhas/${campaign.id}`}
+              className="group flex flex-col rounded-xl border border-line bg-white p-5 shadow-card transition-all hover:border-accent/30 hover:shadow-card-md"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-light">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-accent" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <StatusBadge status={campaign.status} />
+              </div>
+
+              <h3 className="mt-4 text-base font-semibold text-ink group-hover:text-accent transition-colors">
+                {campaign.name}
+              </h3>
+
+              <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted">
+                {campaign.sector && <span>{campaign.sector}</span>}
+                {campaign.sector && campaign.unit && <span>·</span>}
+                {campaign.unit && <span>{campaign.unit}</span>}
+              </div>
+
+              <div className="mt-auto pt-4 border-t border-line flex items-center justify-between text-xs text-muted">
+                <span>{formatDate(campaign.start_date)}</span>
+                <span>até {formatDate(campaign.end_date)}</span>
+              </div>
             </Link>
           ))}
         </div>

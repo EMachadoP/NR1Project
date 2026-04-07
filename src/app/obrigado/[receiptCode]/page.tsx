@@ -2,6 +2,12 @@ import { notFound } from "next/navigation";
 import { getReceiptTtlDays, isReceiptExpired } from "@/lib/domain/receipts/policy";
 import { getPublicReceipt } from "@/lib/server/services/report-service";
 
+const reportStatusConfig = {
+  done:    { label: "Gerado",   icon: "✓", className: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200" },
+  failed:  { label: "Falhou",   icon: "✗", className: "bg-red-50 text-danger ring-1 ring-red-200" },
+  pending: { label: "Pendente", icon: "…", className: "bg-amber-50 text-amber-700 ring-1 ring-amber-200" }
+};
+
 export default async function ThankYouPage({ params }: { params: Promise<{ receiptCode: string }> }) {
   const { receiptCode } = await params;
   const receipt = await getPublicReceipt(receiptCode);
@@ -10,28 +16,64 @@ export default async function ThankYouPage({ params }: { params: Promise<{ recei
     notFound();
   }
 
-  return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-10">
-      <section className="rounded-[28px] bg-white p-8 shadow-panel">
-        <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">Envio concluido</p>
-        <h1 className="mt-4 text-4xl font-semibold text-sky-950">Resposta anonima registrada</h1>
-        <p className="mt-4 text-base leading-8 text-slate-600">
-          O comprovante publico foi registrado com o codigo <strong>{receipt.receiptCode}</strong>. O calculo oficial foi executado no backend e o recibo fica disponivel por {getReceiptTtlDays()} dias.
-        </p>
+  const reportStatus = reportStatusConfig[receipt.reportStatus as keyof typeof reportStatusConfig]
+    ?? reportStatusConfig.pending;
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl bg-slate-50 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">Campanha</p>
-            <p className="mt-2 text-lg font-semibold text-slate-900">{receipt.campaignName}</p>
-            <p className="mt-2 text-sm text-slate-600">Questionario: {receipt.questionnaireName}</p>
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-canvas px-4 py-10">
+      <div className="w-full max-w-md">
+        {/* Success icon */}
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted">Envio concluído</p>
+          <h1 className="mt-2 text-2xl font-semibold text-ink">Resposta anônima registrada</h1>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            Suas respostas foram processadas com anonimato completo. O comprovante fica disponível por{" "}
+            <strong className="text-ink">{getReceiptTtlDays()} dias</strong>.
+          </p>
+        </div>
+
+        {/* Receipt card */}
+        <div className="mt-8 rounded-xl border border-line bg-white p-5 shadow-card">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Código do comprovante</p>
+            <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${reportStatus.className}`}>
+              Relatório: {reportStatus.label}
+            </span>
           </div>
-          <div className="rounded-2xl bg-slate-50 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">Relatorio individual</p>
-            <p className="mt-2 text-lg font-semibold text-slate-900">{receipt.reportStatus === "done" ? "Gerado" : receipt.reportStatus === "failed" ? "Falhou" : "Pendente"}</p>
-            <p className="mt-2 text-sm text-slate-600">Expira em: {new Date(receipt.receiptExpiresAt).toLocaleString("pt-BR")}</p>
+          <p className="mt-2 break-all font-mono text-sm font-semibold text-ink">{receipt.receiptCode}</p>
+
+          <div className="mt-4 space-y-3 border-t border-line pt-4 text-sm">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-muted">Campanha</span>
+              <span className="font-medium text-ink text-right">{receipt.campaignName}</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-muted">Questionário</span>
+              <span className="font-medium text-ink text-right">{receipt.questionnaireName}</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-muted">Expira em</span>
+              <span className="font-medium text-ink">{new Date(receipt.receiptExpiresAt).toLocaleDateString("pt-BR")}</span>
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Anonymity note */}
+        <div className="mt-4 flex items-start gap-3 rounded-lg border border-line bg-white p-4">
+          <svg className="mt-0.5 shrink-0 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <p className="text-xs leading-5 text-muted">
+            Nenhum identificador pessoal foi registrado. O cálculo oficial de risco foi executado exclusivamente no backend.
+          </p>
+        </div>
+      </div>
     </main>
   );
 }
