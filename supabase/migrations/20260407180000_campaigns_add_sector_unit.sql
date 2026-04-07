@@ -61,3 +61,39 @@ alter table public.generated_reports
   add column if not exists payload_json     jsonb,
   add column if not exists storage_path     text,
   add column if not exists error_message    text;
+
+-- monitoring_indicators
+alter table public.monitoring_indicators
+  add column if not exists period_label    text,
+  add column if not exists previous_value  numeric,
+  add column if not exists current_value   numeric,
+  add column if not exists variation       numeric,
+  add column if not exists action_needed   boolean default false;
+
+-- audit_logs
+alter table public.audit_logs
+  add column if not exists actor_id    uuid,
+  add column if not exists actor_role  text,
+  add column if not exists entity_type text,
+  add column if not exists entity_id   uuid,
+  add column if not exists before_json jsonb,
+  add column if not exists after_json  jsonb;
+
+-- action_plans
+alter table public.action_plans
+  add column if not exists risk_identified text,
+  add column if not exists section_name    text,
+  add column if not exists root_cause      text,
+  add column if not exists measure         text,
+  add column if not exists owner_name      text,
+  add column if not exists origin          text;
+
+-- allow legacy title/question_text/etc columns to be null
+-- (production DB was created with older schema using different column names)
+alter table public.questionnaires             alter column title          drop not null;
+alter table public.questionnaire_sections     alter column title          drop not null;
+alter table public.questionnaire_questions    alter column question_text  drop not null;
+alter table public.questionnaire_questions    alter column question_type  drop not null;
+
+-- force PostgREST to reload schema cache so new columns are immediately visible
+notify pgrst, 'reload schema';
