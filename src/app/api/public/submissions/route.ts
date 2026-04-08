@@ -8,7 +8,13 @@ export async function POST(request: Request) {
     const item = await submitAnonymousResponse(body);
     return NextResponse.json(item, { status: 201 });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to submit survey.";
+    console.error("public_submission_failed", error);
+    const message =
+      error instanceof Error
+        ? error.message
+        : typeof error === "object" && error !== null && "message" in error && typeof error.message === "string"
+          ? error.message
+          : "Failed to submit survey.";
     const status = getPublicSubmissionErrorStatus(message);
     return NextResponse.json({ error: message }, { status });
   }

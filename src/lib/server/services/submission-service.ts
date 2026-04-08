@@ -10,6 +10,24 @@ import { createAdminSupabaseClient } from "@/lib/server/supabase/admin";
 import { anonymousSubmissionSchema, type AnonymousSubmissionInput } from "@/lib/validation/submission";
 import { randomUUID } from "node:crypto";
 
+function throwSubmissionStageError(stage: string, error: unknown): never {
+  console.error(`submission_stage_failed:${stage}`, error);
+
+  if (error instanceof Error) {
+    throw error;
+  }
+
+  if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
+    const details =
+      "details" in error && typeof error.details === "string" && error.details
+        ? ` (${error.details})`
+        : "";
+    throw new Error(`${error.message}${details}`);
+  }
+
+  throw new Error(`SUBMISSION_STAGE_FAILED:${stage}`);
+}
+
 function mapInputsForSubmission(metadata: QuestionRiskInput[], submission: AnonymousSubmissionInput) {
   const answerMap = new Map(submission.answers.map((answer) => [answer.questionId, answer.answerRaw]));
 
@@ -59,7 +77,7 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
     receipt_expires_at: receiptExpiresAt
   });
 
-  if (submissionError) throw submissionError;
+  if (submissionError) throwSubmissionStageError("survey_submissions_insert", submissionError);
 
   const answerRows = responseSummary.sectionSummaries.flatMap((section) =>
     section.items.map((item) => ({
@@ -71,7 +89,7 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
   );
 
   const { error: answersError } = await supabase.from("submission_answers").insert(answerRows);
-  if (answersError) throw answersError;
+  if (answersError) throwSubmissionStageError("submission_answers_insert", answersError);
 
   const { error: analysisError } = await supabase.from("analysis_results").insert({
     campaign_id: bundle.campaign.id,
@@ -81,7 +99,7 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
     critical_items_json: responseSummary.criticalItems,
     classification_version: "v1"
   });
-  if (analysisError) throw analysisError;
+  if (analysisError) throwSubmissionStageError("analysis_results_submission_insert", analysisError);
 
   const { error: tokenError } = await supabase
     .from("campaign_tokens")
@@ -90,7 +108,7 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
     .eq("status", "available")
     .is("used_at", null);
 
-  if (tokenError) throw tokenError;
+  if (tokenError) throwSubmissionStageError("campaign_tokens_update", tokenError);
 
   const campaignResponses = await listResponseRiskInputsByCampaign(bundle.campaign.id);
   const campaignSummary = consolidateCampaignRisk(campaignResponses);
