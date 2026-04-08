@@ -95,5 +95,15 @@ alter table public.questionnaire_sections     alter column title          drop n
 alter table public.questionnaire_questions    alter column question_text  drop not null;
 alter table public.questionnaire_questions    alter column question_type  drop not null;
 
+-- generated_reports (dates)
+alter table public.generated_reports
+  add column if not exists requested_at timestamptz default now(),
+  add column if not exists generated_at  timestamptz;
+
+-- analysis_results
+alter table public.analysis_results
+  add column if not exists section_summary_json jsonb,
+  add column if not exists critical_items_json  jsonb;
+
 -- force PostgREST to reload schema cache so new columns are immediately visible
 notify pgrst, 'reload schema';
