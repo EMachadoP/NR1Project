@@ -86,10 +86,18 @@ alter table public.action_plans
   add column if not exists root_cause      text,
   add column if not exists measure         text,
   add column if not exists owner_name      text,
-  add column if not exists origin          text;
+  add column if not exists origin          text,
+  add column if not exists updated_by      uuid;
 
--- allow legacy title/question_text/etc columns to be null
+-- monitoring_indicators (audit columns)
+alter table public.monitoring_indicators
+  add column if not exists created_by uuid,
+  add column if not exists updated_by uuid;
+
+-- allow legacy NOT NULL columns to be null
 -- (production DB was created with older schema using different column names)
+alter table public.campaign_tokens            alter column token          drop not null;
+alter table public.action_plans               alter column title          drop not null;
 alter table public.questionnaires             alter column title          drop not null;
 alter table public.questionnaire_sections     alter column title          drop not null;
 alter table public.questionnaire_questions    alter column question_text  drop not null;
