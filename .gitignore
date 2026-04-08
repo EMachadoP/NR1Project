@@ -11,3 +11,7 @@ supabase/.temp
 *.tsbuildinfo
 .vercel
 .env*.local
+.claude/
+.qwen/
+scripts/check-user.ts
+.env.production
