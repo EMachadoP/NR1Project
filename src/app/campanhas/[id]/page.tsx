@@ -42,22 +42,43 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
           session={session}
           eyebrow="Dashboard da campanha"
           title={dashboard.campaign.name}
+          action={
+            <Link href="/campanhas" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+              Voltar
+            </Link>
+          }
         >
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-6">
-            <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-amber-700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-amber-900">Anonimato preservado</p>
-                <p className="mt-1 text-sm text-amber-800">{dashboard.summary.anonymity.reason}</p>
-                <p className="mt-2 text-xs text-amber-700">
-                  Mínimo configurado: {dashboard.summary.anonymity.minimumGroupSize} respostas necessárias para exibição.
-                </p>
+          <div className="space-y-4">
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-amber-700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-amber-900">Anonimato preservado</p>
+                  <p className="mt-1 text-sm text-amber-800">{dashboard.summary.anonymity.reason}</p>
+                  <p className="mt-2 text-xs text-amber-700">
+                    Mínimo configurado: {dashboard.summary.anonymity.minimumGroupSize} respostas necessárias para exibição.
+                  </p>
+                </div>
               </div>
             </div>
+            {(session.role === "admin" || session.role === "hr") && (
+              <div className="space-y-4">
+                <ReportPanel
+                  campaignId={dashboard.campaign.id}
+                  initialReport={analyticalReport ? { id: analyticalReport.id, status: analyticalReport.status } : null}
+                />
+                {session.role === "admin" && (
+                  <TokenGenerator campaignId={dashboard.campaign.id} />
+                )}
+              </div>
+            )}
           </div>
         </PortalShell>
       );
@@ -71,6 +92,14 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
         eyebrow="Dashboard da campanha"
         title={dashboard.campaign.name}
         description="Painel consolidado de risco. O cálculo oficial é centralizado no backend."
+        action={
+          <Link href="/campanhas" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Voltar
+          </Link>
+        }
       >
         {/* KPI strip */}
         <div className="grid gap-4 sm:grid-cols-3">
