@@ -90,6 +90,17 @@ create index if not exists risk_inventory_items_version_id_idx
 create index if not exists risk_inventory_items_origin_item_id_idx
   on public.risk_inventory_items (origin_item_id);
 
+with campaign_item_rollup as (
+  select
+    items.campaign_id,
+    min(items.created_at) as first_created_at,
+    max(items.updated_at) as last_updated_at,
+    (array_agg(items.created_by order by items.created_at asc) filter (where items.created_by is not null))[1] as first_created_by,
+    (array_agg(items.updated_by order by items.updated_at desc) filter (where items.updated_by is not null))[1] as last_updated_by
+  from public.risk_inventory_items items
+  where items.campaign_id is not null
+  group by items.campaign_id
+)
 insert into public.risk_inventory_versions (
   campaign_id,
   version_number,
@@ -106,28 +117,26 @@ insert into public.risk_inventory_versions (
   approval_note
 )
 select
-  items.campaign_id,
+  rollup.campaign_id,
   1,
   'published',
   'Versao inicial migrada da Fase 1',
-  coalesce(min(items.created_by), min(items.updated_by), fallback_profile.profile_id),
-  min(items.created_at),
-  coalesce(max(items.updated_by), max(items.created_by), fallback_profile.profile_id),
-  max(items.updated_at),
-  coalesce(max(items.updated_by), max(items.created_by), fallback_profile.profile_id),
-  max(items.updated_at),
-  coalesce(max(items.updated_by), max(items.created_by), fallback_profile.profile_id),
-  max(items.updated_at),
+  coalesce(rollup.first_created_by, rollup.last_updated_by, fallback_profile.profile_id),
+  rollup.first_created_at,
+  coalesce(rollup.last_updated_by, rollup.first_created_by, fallback_profile.profile_id),
+  rollup.last_updated_at,
+  coalesce(rollup.last_updated_by, rollup.first_created_by, fallback_profile.profile_id),
+  rollup.last_updated_at,
+  coalesce(rollup.last_updated_by, rollup.first_created_by, fallback_profile.profile_id),
+  rollup.last_updated_at,
   'Migracao automatica da Fase 1'
-from public.risk_inventory_items items
+from campaign_item_rollup rollup
 cross join lateral (
   select id as profile_id
   from public.profiles
   order by (role = 'admin') desc, created_at asc, id asc
   limit 1
-) as fallback_profile
-where items.campaign_id is not null
-group by items.campaign_id, fallback_profile.profile_id;
+) as fallback_profile;
 
 update public.risk_inventory_items items
 set
@@ -215,3 +224,4 @@ begin
   return v_published;
 end;
 $$;
+
