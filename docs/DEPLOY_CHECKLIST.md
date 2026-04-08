@@ -22,6 +22,8 @@
 - [ ] `20260406233000_phase2_reports_and_receipts.sql` - Relatórios
 - [ ] `20260407001000_phase3_rbac_scope.sql` - RBAC
 - [ ] `20260407013000_phase4_ai_analysis_metadata.sql` - IA
+- [ ] `20260407021500_questionnaire_catalog_metadata.sql` - Catalogo de questionarios
+- [ ] `20260407180000_campaigns_add_sector_unit.sql` - Escopo por setor/unidade em campanhas
 
 **Onde:** Supabase Dashboard → SQL Editor
 
@@ -63,10 +65,12 @@ where id = 'UUID_DO_USUARIO';
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase Settings → API → Project URL | ✅ SIM |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase Settings → API → anon public | ✅ SIM |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase Settings → API → service_role | ✅ SIM |
+| `SUPABASE_ACCESS_TOKEN` | Supabase Dashboard → Account → Access Tokens | ✅ SIM |
 | `REPORTS_BUCKET` | Valor: `reports` | ✅ SIM |
 | `OPENAI_API_KEY` | platform.openai.com | Opcional |
 
 ⚠️ **ATENÇÃO:** `SUPABASE_SERVICE_ROLE_KEY` é a causa do erro 500 em `/campanhas`. **DEVE** estar configurada.
+⚠️ **ATENÇÃO:** em ambiente Vercel, `npm run build` roda `supabase db push --linked --yes` antes do `next build`. Sem `SUPABASE_ACCESS_TOKEN`, o deploy vai falhar.
 
 ### 7️⃣ Vercel - Redeploy
 
@@ -117,3 +121,5 @@ As páginas de login usam apenas o cliente anon do Supabase (`NEXT_PUBLIC_SUPABA
 ```
 
 **Não pule etapas!** A ordem acima é importante.
+
+

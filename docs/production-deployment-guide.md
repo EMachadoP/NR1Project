@@ -20,6 +20,7 @@ Obrigatorias:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_ACCESS_TOKEN`
 - `REPORTS_BUCKET`
 
 Condicionais:
@@ -30,6 +31,7 @@ Recomendacao operacional:
 - `OPENAI_API_KEY` so deve existir quando a integracao de IA estiver habilitada no ambiente
 - `OPENAI_MODEL` pode permanecer no default atual do codigo se nao houver override explicito
 - `SUPABASE_SERVICE_ROLE_KEY` deve existir apenas no backend da Vercel; nunca no frontend
+- `SUPABASE_ACCESS_TOKEN` deve ser gerado em `Supabase Dashboard > Account > Access Tokens` e configurado no Vercel para `Production` e `Preview`
 
 ## 3. Configuracao de build no Vercel
 Configuracao esperada para projeto Next.js:
@@ -43,12 +45,23 @@ Observacoes:
 - O projeto usa App Router e APIs server-side, entao nao deve ser exportado como estatico
 - `middleware.ts` precisa permanecer habilitado para sincronizacao de sessao Supabase
 - O build deve falhar se variaveis obrigatorias nao estiverem configuradas, o que e desejado em producao
+- O script `npm run build` usa `node scripts/build.js`; em ambiente Vercel ele executa `supabase db push --linked --yes` antes do `next build`, e localmente roda apenas `next build`
+- O projeto Vercel ja esta vinculado localmente; o build remoto depende do `SUPABASE_ACCESS_TOKEN` para autenticar a CLI do Supabase
 
 ## 4. Configuracao do Supabase
 Banco:
 - Aplicar todas as migrations em ordem cronologica
 - Confirmar constraints de anonimato e relatorios ja presentes nas Fases 1 a 4
 - Confirmar existencia dos campos de RBAC em `profiles`: `role`, `sector`, `unit`
+
+Migrations atuais:
+- `20260406154000_initial_schema.sql`
+- `20260406223000_phase1_integrity_alignment.sql`
+- `20260406233000_phase2_reports_and_receipts.sql`
+- `20260407001000_phase3_rbac_scope.sql`
+- `20260407013000_phase4_ai_analysis_metadata.sql`
+- `20260407021500_questionnaire_catalog_metadata.sql`
+- `20260407180000_campaigns_add_sector_unit.sql`
 
 Auth:
 - Criar usuarios internos apenas para `admin`, `hr` e `manager`
@@ -149,3 +162,5 @@ Operacao:
 - crescimento do bucket de relatorios
 - latencia de geracao de relatorio analitico
 - taxa de fallback da IA quando `OPENAI_API_KEY` estiver habilitada
+
+
