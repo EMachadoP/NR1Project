@@ -334,6 +334,11 @@ docs/
 - `GET /api/admin/indicators`
 - `POST /api/admin/indicators`
 - `GET /api/admin/reports/[id]/download`
+- `GET /api/admin/risk-inventory/versions?campaignId=...`
+- `GET /api/admin/risk-inventory/versions/[versionId]`
+- `POST /api/admin/risk-inventory/revisions`
+- `POST /api/admin/risk-inventory/versions/[versionId]/publish`
+- `GET /api/admin/risk-inventory/versions/[versionId]/export`
 - `POST /api/admin/ai/recommendations`
 
 ### Ações de negócio principais
@@ -391,6 +396,7 @@ docs/
 - histórico de alterações do plano de ação
 - módulo de indicadores
 - exportações CSV/Excel anonimizadas
+- versionamento documental do inventario com export oficial somente da revisao `published`
 
 ### Fase 5 - IA com guardrails
 - endpoint seguro para recomendações estruturadas
@@ -445,3 +451,4 @@ docs/
 - regras de classificação residem em um módulo único de domínio
 - plano de ação deve ser editável com histórico
 - IA é suporte à análise, não motor decisório final
+

@@ -10,6 +10,13 @@ const IconCampaigns = () => (
   </svg>
 );
 
+const IconRiskInventory = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>
+);
+
 const IconActionPlan = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
@@ -31,6 +38,7 @@ const IconQuestionnaires = () => (
 
 const links: Array<{ href: Route; label: string; icon: React.ReactNode; visibleFor?: PortalRole[] }> = [
   { href: "/campanhas", label: "Campanhas", icon: <IconCampaigns /> },
+  { href: "/inventario-riscos", label: "Inventário de riscos", icon: <IconRiskInventory /> },
   { href: "/plano-de-acao", label: "Plano de ação", icon: <IconActionPlan /> },
   { href: "/indicadores", label: "Indicadores", icon: <IconIndicators /> },
   { href: "/questionarios", label: "Questionários", icon: <IconQuestionnaires />, visibleFor: ["admin", "hr"] },
@@ -58,9 +66,7 @@ export function PortalShell({ session, eyebrow, title, description, action, chil
 
   return (
     <div className="flex min-h-screen bg-canvas">
-      {/* Sidebar */}
       <aside className="hidden w-60 shrink-0 flex-col bg-sidebar lg:flex">
-        {/* Brand */}
         <div className="flex items-center gap-3 px-5 py-6">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -73,17 +79,14 @@ export function PortalShell({ session, eyebrow, title, description, action, chil
           </div>
         </div>
 
-        {/* Divider */}
         <div className="mx-4 border-t border-slate-800" />
 
-        {/* Nav */}
         <nav className="flex-1 space-y-1 px-3 py-4">
           {visibleLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} icon={link.icon} />
           ))}
         </nav>
 
-        {/* User card */}
         <div className="mx-3 mb-4 rounded-xl bg-slate-800/60 p-3">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white">
@@ -108,26 +111,18 @@ export function PortalShell({ session, eyebrow, title, description, action, chil
         </div>
       </aside>
 
-      {/* Main */}
       <main className="flex min-w-0 flex-1 flex-col">
-        {/* Top bar (mobile brand + page title) */}
         <header className="flex items-center justify-between border-b border-line bg-white px-6 py-4 lg:px-8">
           <div>
-            {eyebrow && (
-              <p className="mb-0.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted">{eyebrow}</p>
-            )}
+            {eyebrow && <p className="mb-0.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted">{eyebrow}</p>}
             <h1 className="text-xl font-semibold text-ink">{title}</h1>
-            {description && (
-              <p className="mt-0.5 text-sm text-muted">{description}</p>
-            )}
+            {description && <p className="mt-0.5 text-sm text-muted">{description}</p>}
           </div>
           {action && <div className="shrink-0">{action}</div>}
         </header>
 
-        {/* Content */}
         <div className="flex-1 p-6 lg:p-8">{children}</div>
       </main>
     </div>
   );
 }
-

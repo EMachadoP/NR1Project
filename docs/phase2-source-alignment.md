@@ -16,3 +16,4 @@ Este arquivo registra os ajustes que precisam existir em `03_SOURCE_OF_TRUTH.md`
 
 ## Observacao
 A implementacao do workspace ja segue estas regras. Este arquivo serve para fechar a lacuna entre codigo atual e documentacao de referencia quando os originais estiverem fora do repositorio.
+

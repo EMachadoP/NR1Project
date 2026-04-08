@@ -31,6 +31,27 @@ describe("authorization", () => {
   it("keeps an access matrix for admin endpoints", () => {
     expect(ADMIN_ENDPOINT_ACCESS_MATRIX.length).toBeGreaterThan(10);
     expect(ADMIN_ENDPOINT_ACCESS_MATRIX.find((rule) => rule.path === "/api/admin/reports/[id]/download")?.notes).toContain("Gestor nunca");
+    expect(ADMIN_ENDPOINT_ACCESS_MATRIX.find((rule) => rule.path === "/api/admin/risk-inventory/versions/[id]/export")?.allowedRoles).toEqual(["admin", "hr", "manager"]);
+  });
+
+  it("tracks version workflow endpoints in the access matrix", () => {
+    expect(ADMIN_ENDPOINT_ACCESS_MATRIX.find((rule) => rule.path === "/api/admin/risk-inventory/versions")?.allowedRoles).toEqual(["admin", "hr", "manager"]);
+    expect(ADMIN_ENDPOINT_ACCESS_MATRIX.find((rule) => rule.path === "/api/admin/risk-inventory/revisions")?.allowedRoles).toEqual(["admin", "hr"]);
+    expect(ADMIN_ENDPOINT_ACCESS_MATRIX.find((rule) => rule.path === "/api/admin/risk-inventory/versions/[id]/publish")?.allowedRoles).toEqual(["admin"]);
+  });
+
+  it("does not duplicate risk inventory workflow endpoints in the access matrix", () => {
+    const riskInventoryWorkflowRoutes = [
+      "/api/admin/risk-inventory/versions",
+      "/api/admin/risk-inventory/versions/[id]",
+      "/api/admin/risk-inventory/revisions",
+      "/api/admin/risk-inventory/versions/[id]/publish",
+      "/api/admin/risk-inventory/versions/[id]/export"
+    ];
+
+    for (const path of riskInventoryWorkflowRoutes) {
+      expect(ADMIN_ENDPOINT_ACCESS_MATRIX.filter((rule) => rule.path === path)).toHaveLength(1);
+    }
   });
 
   it("allows required roles and blocks forbidden roles", () => {
