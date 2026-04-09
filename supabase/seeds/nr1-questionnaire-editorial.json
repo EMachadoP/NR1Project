@@ -1,0 +1,53 @@
+{
+  "expectedSectionCount": 12,
+  "questionnaire": {
+    "id": "a1000000-0000-0000-0000-000000000001",
+    "name": "Questionario NR-1 - Setor de Costura",
+    "version": "v3.0.0"
+  },
+  "sections": [
+    {
+      "name": "RISCOS ERGONOMICOS",
+      "questions": [
+        { "prompt": "Meu posto de trabalho permite postura adequada durante a costura." },
+        { "prompt": "Consigo ajustar cadeira, mesa ou apoio para trabalhar com conforto." },
+        { "prompt": "Tenho pausas suficientes para reduzir cansaco fisico e muscular." },
+        { "prompt": "Recebo orientacao sobre postura correta e ergonomia no posto de trabalho." },
+        { "prompt": "Os movimentos exigidos pela minha atividade nao causam desconforto excessivo." },
+        { "prompt": "Os equipamentos que utilizo favorecem um trabalho seguro e confortavel." },
+        { "prompt": "Tenho espaco adequado para executar meus movimentos com seguranca." },
+        { "prompt": "Sinto que a organizacao do posto ajuda a prevenir dores e lesoes." }
+      ]
+    },
+    {
+      "name": "RISCOS AMBIENTAIS",
+      "questions": [
+        { "prompt": "A ventilacao do ambiente de trabalho e adequada durante a jornada." },
+        { "prompt": "A temperatura do local de trabalho permanece confortavel na maior parte do tempo." },
+        { "prompt": "O ruido do ambiente nao dificulta minha concentracao ou comunicacao." },
+        { "prompt": "A iluminacao do meu posto e suficiente para realizar minhas atividades com seguranca." },
+        { "prompt": "Percebo que o ambiente e mantido limpo e organizado durante a rotina." },
+        { "prompt": "As condicoes gerais do ambiente contribuem para minha seguranca no trabalho." }
+      ]
+    },
+    {
+      "name": "RISCOS QUIMICOS/BIOLOGICOS",
+      "questions": [
+        { "prompt": "Recebo orientacao segura para lidar com materiais e residuos do processo." },
+        { "prompt": "Tenho acesso aos EPIs necessarios quando existe risco de contato com substancias ou contaminantes." },
+        { "prompt": "Os materiais utilizados no processo sao armazenados e manuseados com seguranca." },
+        { "prompt": "Se houver contato com material contaminante, sei exatamente como agir." },
+        { "prompt": "Percebo que a empresa monitora e controla adequadamente os riscos quimicos e biologicos." }
+      ]
+    },
+    {
+      "name": "REPETITIVIDADE",
+      "questions": [
+        { "prompt": "Consigo alternar movimentos ou tarefas para reduzir repeticao excessiva." },
+        { "prompt": "A repeticao das minhas atividades nao gera fadiga excessiva ao longo do turno." },
+        { "prompt": "Tenho suporte para comunicar desconforto relacionado a movimentos repetitivos." },
+        { "prompt": "A organizacao do trabalho ajuda a prevenir desgaste por repetitividade." }
+      ]
+    }
+  ]
+}

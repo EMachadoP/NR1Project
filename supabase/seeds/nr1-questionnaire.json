@@ -1,0 +1,656 @@
+{
+  "questionnaire": {
+    "id": "a1000000-0000-0000-0000-000000000001",
+    "name": "Questionario NR-1 - Setor de Costura",
+    "version": "v3.0.0",
+    "status": "published"
+  },
+  "scaleLabels": [
+    "Nunca",
+    "Raramente",
+    "As vezes",
+    "frequentemente",
+    "Sempre"
+  ],
+  "warnings": [
+    "divergencia detectada: a aba Questionario possui 8 secoes visiveis, mas a estrutura alvo exige 12."
+  ],
+  "sections": [
+    {
+      "id": "nr1-organizacao-do-trabalho-e-jornada",
+      "name": "ORGANIZACAO DO TRABALHO E JORNADA",
+      "order_index": 0,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-organizacao-do-trabalho-e-jornada-q01",
+          "prompt": "Consigo cumprir minha jornada de trabalho sem necessidade frequente de horas extras",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-organizacao-do-trabalho-e-jornada-q02",
+          "prompt": "Quando ha necessidade de horas extras, isso ocorre de forma voluntaria e planejada.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-organizacao-do-trabalho-e-jornada-q03",
+          "prompt": "Consigo realizar minhas atividades SEM pressa excessiva ou pressao constante",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-organizacao-do-trabalho-e-jornada-q04",
+          "prompt": "As metas do meu SETOR sao claras e alcancaveis dentro da jornada normal",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        },
+        {
+          "id": "nr1-organizacao-do-trabalho-e-jornada-q05",
+          "prompt": "Tenho pausas suficientes para descanso.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 4
+        }
+      ]
+    },
+    {
+      "id": "nr1-previsibilidade-e-rotina",
+      "name": "PREVISIBILIDADE E ROTINA",
+      "order_index": 1,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-previsibilidade-e-rotina-q01",
+          "prompt": "Alteracoes de horario ou escala sao comunicadas com antecedencia razoavel e de forma planejada",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-previsibilidade-e-rotina-q02",
+          "prompt": "Quando me ausento, o trabalho pode ser reorganizado sem sobrecarga excessiva para mim ou para a equipe e com apoio de diaristas.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-previsibilidade-e-rotina-q03",
+          "prompt": "Tenho clareza sobre minhas responsabilidades e o que se espera do meu trabalho, quando estou no meu posto de trabalho.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-previsibilidade-e-rotina-q04",
+          "prompt": "Minha rotina de trabalho e previsivel quanto a horarios e dias trabalhados",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        }
+      ]
+    },
+    {
+      "id": "nr1-autonomia-participacao-e-sentido-do-trabalho",
+      "name": "AUTONOMIA, PARTICIPACAO E SENTIDO DO TRABALHO",
+      "order_index": 2,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-autonomia-participacao-e-sentido-do-trabalho-q01",
+          "prompt": "Tenho autonomia para executar as minhas tarefas no dia a dia.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-autonomia-participacao-e-sentido-do-trabalho-q02",
+          "prompt": "Posso sugerir melhorias ou mudancas na forma de realizar minhas atividades",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-autonomia-participacao-e-sentido-do-trabalho-q03",
+          "prompt": "Sinto que meu trabalho e util, importante e reconhecido no ambiente de trabalho",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        }
+      ]
+    },
+    {
+      "id": "nr1-relacoes-lideranca-e-respeito",
+      "name": "RELACOES, LIDERANCA E RESPEITO",
+      "order_index": 3,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-relacoes-lideranca-e-respeito-q01",
+          "prompt": "Sou tratado(a) com respeito por colegas e liderancas.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-relacoes-lideranca-e-respeito-q02",
+          "prompt": "A forma como recebo orientacoes da lideranca e clara e respeitosa",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-relacoes-lideranca-e-respeito-q03",
+          "prompt": "Sinto-me confortavel para tirar duvidas ou pedir ajuda, quando necessario",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-relacoes-lideranca-e-respeito-q04",
+          "prompt": "Posso buscar apoio do RH quando sinto necessidade",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        },
+        {
+          "id": "nr1-relacoes-lideranca-e-respeito-q05",
+          "prompt": "Conflitos no ambiente de trabalho sao tratados de forma adequada quando surgem ?",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 4
+        }
+      ]
+    },
+    {
+      "id": "nr1-pressao-cobranca-e-clima-psicologico",
+      "name": "PRESSAO, COBRANCA E CLIMA PSICOLOGICO",
+      "order_index": 4,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-pressao-cobranca-e-clima-psicologico-q01",
+          "prompt": "Sinto que a cobranca por resultados ocorre de forma justa e equilibrada",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-pressao-cobranca-e-clima-psicologico-q02",
+          "prompt": "Sinto seguranca de que eventuais dificuldades em atingir resultados sao tratadas de forma respeitosa.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-pressao-cobranca-e-clima-psicologico-q03",
+          "prompt": "O ambiente de trabalho e emocionalmente seguro, incentiva o respeito entre as pessoas",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-pressao-cobranca-e-clima-psicologico-q04",
+          "prompt": "Salvo excecoes, respeito e cumpro as pausas diarias ( para lanchar/descanso e almocar) no meu local de trabalho",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        }
+      ]
+    },
+    {
+      "id": "nr1-saude-bem-estar-e-suporte",
+      "name": "SAUDE, BEM-ESTAR E SUPORTE",
+      "order_index": 5,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-saude-bem-estar-e-suporte-q01",
+          "prompt": "A empresa permite me ausentar para cuidar da minha saude e resolver situacoes pessoais, quando necessario.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-saude-bem-estar-e-suporte-q02",
+          "prompt": "Posso comunicar problemas de saude sem receio de consequencias negativas",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-saude-bem-estar-e-suporte-q03",
+          "prompt": "Percebo preocupacao da empresa com o bem-estar das pessoas",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-saude-bem-estar-e-suporte-q04",
+          "prompt": "Meu ambiente de trabalho encoraja o bem estar fisico, alimentacao saudavel e estilo de vida ativo.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        }
+      ]
+    },
+    {
+      "id": "nr1-comunicacao-e-informacao",
+      "name": "COMUNICACAO E INFORMACAO",
+      "order_index": 6,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-comunicacao-e-informacao-q01",
+          "prompt": "As informacoes importantes da empresa sao feitas de forma clara e acessivel.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-comunicacao-e-informacao-q02",
+          "prompt": "Existem canais adequados para comunicacao interna",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-comunicacao-e-informacao-q03",
+          "prompt": "Sei a quem recorrer, incluindo o RH ou a lideranca para buscar orientacao ou apoio, quando necessario.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        }
+      ]
+    },
+    {
+      "id": "nr1-percepcao-geral-do-clima",
+      "name": "PERCEPCAO GERAL DO CLIMA",
+      "order_index": 7,
+      "source": "workbook",
+      "questions": [
+        {
+          "id": "nr1-percepcao-geral-do-clima-q01",
+          "prompt": "Considero o clima de trabalho do meu setor positivo",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-percepcao-geral-do-clima-q02",
+          "prompt": "Sinto-me motivado(a) para realizar minhas atividades",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-percepcao-geral-do-clima-q03",
+          "prompt": "O trabalho afeta negativamente minha vida pessoal ou familiar",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        }
+      ]
+    },
+    {
+      "id": "nr1-riscos-ergonomicos",
+      "name": "RISCOS ERGONOMICOS",
+      "order_index": 8,
+      "source": "editorial",
+      "questions": [
+        {
+          "id": "nr1-riscos-ergonomicos-q01",
+          "prompt": "Meu posto de trabalho permite postura adequada durante a costura.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q02",
+          "prompt": "Consigo ajustar cadeira, mesa ou apoio para trabalhar com conforto.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q03",
+          "prompt": "Tenho pausas suficientes para reduzir cansaco fisico e muscular.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q04",
+          "prompt": "Recebo orientacao sobre postura correta e ergonomia no posto de trabalho.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q05",
+          "prompt": "Os movimentos exigidos pela minha atividade nao causam desconforto excessivo.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 4
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q06",
+          "prompt": "Os equipamentos que utilizo favorecem um trabalho seguro e confortavel.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 5
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q07",
+          "prompt": "Tenho espaco adequado para executar meus movimentos com seguranca.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 6
+        },
+        {
+          "id": "nr1-riscos-ergonomicos-q08",
+          "prompt": "Sinto que a organizacao do posto ajuda a prevenir dores e lesoes.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 7
+        }
+      ]
+    },
+    {
+      "id": "nr1-riscos-ambientais",
+      "name": "RISCOS AMBIENTAIS",
+      "order_index": 9,
+      "source": "editorial",
+      "questions": [
+        {
+          "id": "nr1-riscos-ambientais-q01",
+          "prompt": "A ventilacao do ambiente de trabalho e adequada durante a jornada.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-riscos-ambientais-q02",
+          "prompt": "A temperatura do local de trabalho permanece confortavel na maior parte do tempo.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-riscos-ambientais-q03",
+          "prompt": "O ruido do ambiente nao dificulta minha concentracao ou comunicacao.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-riscos-ambientais-q04",
+          "prompt": "A iluminacao do meu posto e suficiente para realizar minhas atividades com seguranca.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        },
+        {
+          "id": "nr1-riscos-ambientais-q05",
+          "prompt": "Percebo que o ambiente e mantido limpo e organizado durante a rotina.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 4
+        },
+        {
+          "id": "nr1-riscos-ambientais-q06",
+          "prompt": "As condicoes gerais do ambiente contribuem para minha seguranca no trabalho.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 5
+        }
+      ]
+    },
+    {
+      "id": "nr1-riscos-quimicos-biologicos",
+      "name": "RISCOS QUIMICOS/BIOLOGICOS",
+      "order_index": 10,
+      "source": "editorial",
+      "questions": [
+        {
+          "id": "nr1-riscos-quimicos-biologicos-q01",
+          "prompt": "Recebo orientacao segura para lidar com materiais e residuos do processo.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-riscos-quimicos-biologicos-q02",
+          "prompt": "Tenho acesso aos EPIs necessarios quando existe risco de contato com substancias ou contaminantes.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-riscos-quimicos-biologicos-q03",
+          "prompt": "Os materiais utilizados no processo sao armazenados e manuseados com seguranca.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-riscos-quimicos-biologicos-q04",
+          "prompt": "Se houver contato com material contaminante, sei exatamente como agir.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        },
+        {
+          "id": "nr1-riscos-quimicos-biologicos-q05",
+          "prompt": "Percebo que a empresa monitora e controla adequadamente os riscos quimicos e biologicos.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 4
+        }
+      ]
+    },
+    {
+      "id": "nr1-repetitividade",
+      "name": "REPETITIVIDADE",
+      "order_index": 11,
+      "source": "editorial",
+      "questions": [
+        {
+          "id": "nr1-repetitividade-q01",
+          "prompt": "Consigo alternar movimentos ou tarefas para reduzir repeticao excessiva.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 0
+        },
+        {
+          "id": "nr1-repetitividade-q02",
+          "prompt": "A repeticao das minhas atividades nao gera fadiga excessiva ao longo do turno.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "nr1-repetitividade-q03",
+          "prompt": "Tenho suporte para comunicar desconforto relacionado a movimentos repetitivos.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "nr1-repetitividade-q04",
+          "prompt": "A organizacao do trabalho ajuda a prevenir desgaste por repetitividade.",
+          "answer_type": "likert_1_5",
+          "scoring_direction": "negative",
+          "weight": 1,
+          "is_required": true,
+          "is_active": true,
+          "order_index": 3
+        }
+      ]
+    }
+  ]
+}
