@@ -71,7 +71,6 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
     id: submissionId,
     campaign_id: bundle.campaign.id,
     token_id: bundle.tokenId,
-    mode: "anonymous",
     observation_text: safeObservationText,
     receipt_code: receiptCode,
     receipt_expires_at: receiptExpiresAt
