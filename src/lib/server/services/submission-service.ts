@@ -130,7 +130,8 @@ export async function submitAnonymousResponse(input: AnonymousSubmissionInput) {
     reportRequestId = pendingReport.id;
     const generatedReport = await processGeneratedReport(pendingReport.id);
     reportStatus = generatedReport.status;
-  } catch {
+  } catch (reportError) {
+    console.error("report_generation_failed", reportError);
     reportStatus = "failed";
   }
 
