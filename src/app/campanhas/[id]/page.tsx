@@ -95,7 +95,11 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
         session={session}
         eyebrow="Dashboard da campanha"
         title={dashboard.campaign.name}
-        description="Painel consolidado de risco. O cálculo oficial é centralizado no backend."
+        description={
+          dashboard.campaign.questionnaire?.name
+            ? `${dashboard.campaign.questionnaire.name}${dashboard.campaign.questionnaire.version ? ` · v${dashboard.campaign.questionnaire.version}` : ""} · Painel consolidado de risco com cálculo oficial centralizado no backend.`
+            : "Painel consolidado de risco. O cálculo oficial é centralizado no backend."
+        }
         action={
           <div className="flex items-center gap-2">
             {session.role === "admin" ? <CampaignDeleteButton campaignId={dashboard.campaign.id} /> : null}

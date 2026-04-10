@@ -127,6 +127,11 @@ export function CampaignForm({ questionnaires }: { questionnaires: Questionnaire
               </select>
             )}
             {errors.questionnaire_id && <p className="mt-1 text-xs text-danger">{errors.questionnaire_id}</p>}
+            {questionnaires.length > 0 ? (
+              <p className="mt-1 text-xs text-muted">
+                A campanha será criada como ativa e já poderá receber tokens de resposta.
+              </p>
+            ) : null}
           </div>
 
           {/* Dates */}
@@ -225,4 +230,3 @@ export function CampaignForm({ questionnaires }: { questionnaires: Questionnaire
     </form>
   );
 }
-

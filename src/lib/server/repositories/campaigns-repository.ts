@@ -2,18 +2,43 @@ import type { PortalSession } from "@/lib/auth/session";
 import { filterCampaignsBySessionScope } from "@/lib/auth/authorization";
 import { createAdminSupabaseClient } from "@/lib/server/supabase/admin";
 
+function normalizeQuestionnaireRelation(
+  relation:
+    | { name?: string | null; version?: string | null }
+    | Array<{ name?: string | null; version?: string | null }>
+    | null
+    | undefined
+) {
+  if (!relation) {
+    return null;
+  }
+
+  const questionnaire = Array.isArray(relation) ? relation[0] : relation;
+  if (!questionnaire) {
+    return null;
+  }
+
+  return {
+    name: questionnaire.name ?? null,
+    version: questionnaire.version ?? null
+  };
+}
+
 export async function listCampaigns() {
   const supabase = createAdminSupabaseClient();
   const { data, error } = await supabase
     .from("campaigns")
-    .select("id, name, sector, unit, status, start_date, end_date, language")
+    .select("id, name, sector, unit, status, start_date, end_date, language, questionnaire_id, questionnaires(name, version)")
     .order("created_at", { ascending: false });
 
   if (error) {
     throw error;
   }
 
-  return data ?? [];
+  return (data ?? []).map((campaign) => ({
+    ...campaign,
+    questionnaire: normalizeQuestionnaireRelation(campaign.questionnaires)
+  }));
 }
 
 export async function listCampaignsBySessionScope(session: PortalSession) {
@@ -25,7 +50,7 @@ export async function getCampaign(campaignId: string) {
   const supabase = createAdminSupabaseClient();
   const { data, error } = await supabase
     .from("campaigns")
-    .select("id, name, sector, unit, status, start_date, end_date, language, questionnaire_id")
+    .select("id, name, sector, unit, status, start_date, end_date, language, questionnaire_id, questionnaires(name, version)")
     .eq("id", campaignId)
     .maybeSingle();
 
@@ -33,7 +58,14 @@ export async function getCampaign(campaignId: string) {
     throw error;
   }
 
-  return data;
+  if (!data) {
+    return null;
+  }
+
+  return {
+    ...data,
+    questionnaire: normalizeQuestionnaireRelation(data.questionnaires)
+  };
 }
 
 export async function listAccessibleCampaignIds(session: PortalSession) {
@@ -59,7 +91,7 @@ export async function createCampaign(data: {
       end_date: data.end_date,
       sector: data.sector ?? null,
       unit: data.unit ?? null,
-      status: "draft",
+      status: "active",
       language: "pt-BR"
     })
     .select("id, name, status")

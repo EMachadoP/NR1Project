@@ -82,6 +82,14 @@ export default async function CampaignsPage() {
                 {campaign.unit && <span>{campaign.unit}</span>}
               </div>
 
+              {campaign.questionnaire?.name ? (
+                <div className="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+                  <span className="font-medium text-slate-700">Questionário:</span>{" "}
+                  {campaign.questionnaire.name}
+                  {campaign.questionnaire.version ? ` · v${campaign.questionnaire.version}` : ""}
+                </div>
+              ) : null}
+
               <div className="mt-auto pt-4 border-t border-line flex items-center justify-between text-xs text-muted">
                 <span>{formatDate(campaign.start_date)}</span>
                 <span>até {formatDate(campaign.end_date)}</span>
