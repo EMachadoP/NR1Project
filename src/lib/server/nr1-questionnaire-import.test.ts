@@ -19,6 +19,7 @@ type ParserModule = {
     questionnaire: { name: string };
     warnings: string[];
     sections: Array<{
+      id: string;
       questions: Array<Record<string, unknown>>;
     }>;
   };
@@ -78,7 +79,14 @@ describe("NR-1 questionnaire import", () => {
     const questions = normalized.sections.flatMap((section: { questions: Array<Record<string, unknown>> }) => section.questions);
     expect(questions.length).toBeGreaterThanOrEqual(35);
     expect(
+      normalized.sections.every((section: { id: string }) =>
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(section.id)
+      )
+    ).toBe(true);
+    expect(
       questions.every((question: Record<string, unknown>) =>
+        typeof question.id === "string" &&
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(question.id as string) &&
         question.answer_type === "likert_1_5" &&
         question.scoring_direction === "negative" &&
         question.weight === 1 &&

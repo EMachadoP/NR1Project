@@ -5,6 +5,7 @@ import { getCampaignDashboardService } from "@/lib/server/services/dashboard-ser
 import { getLatestAnalyticalReportByCampaignId } from "@/lib/server/repositories/reports-repository";
 import { TokenGenerator } from "./token-generator";
 import { ReportPanel } from "./report-panel";
+import { CampaignDeleteButton } from "./campaign-delete-button";
 
 type RiskLevel = "MUITO BAIXO" | "BAIXO" | "MÉDIO" | "ALTO" | "CRÍTICO";
 
@@ -43,12 +44,15 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
           eyebrow="Dashboard da campanha"
           title={dashboard.campaign.name}
           action={
-            <Link href="/campanhas" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-              Voltar
-            </Link>
+            <div className="flex items-center gap-2">
+              {session.role === "admin" ? <CampaignDeleteButton campaignId={dashboard.campaign.id} /> : null}
+              <Link href="/campanhas" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+                Voltar
+              </Link>
+            </div>
           }
         >
           <div className="space-y-4">
@@ -93,12 +97,15 @@ export default async function CampaignDashboardPage({ params }: { params: Promis
         title={dashboard.campaign.name}
         description="Painel consolidado de risco. O cálculo oficial é centralizado no backend."
         action={
-          <Link href="/campanhas" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Voltar
-          </Link>
+          <div className="flex items-center gap-2">
+            {session.role === "admin" ? <CampaignDeleteButton campaignId={dashboard.campaign.id} /> : null}
+            <Link href="/campanhas" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-slate-50">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+              Voltar
+            </Link>
+          </div>
         }
       >
         {/* KPI strip */}

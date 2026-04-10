@@ -1,4 +1,5 @@
 const path = require("path");
+const { createHash } = require("node:crypto");
 const xlsx = require("xlsx");
 
 function normalizeText(value) {
@@ -74,9 +75,17 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "");
 }
 
+function stableUuid(seed) {
+  const hash = createHash("sha1").update(seed).digest("hex");
+  const chars = hash.slice(0, 32).split("");
+  chars[12] = "5";
+  chars[16] = ["8", "9", "a", "b"][parseInt(chars[16], 16) % 4];
+  return `${chars.slice(0, 8).join("")}-${chars.slice(8, 12).join("")}-${chars.slice(12, 16).join("")}-${chars.slice(16, 20).join("")}-${chars.slice(20, 32).join("")}`;
+}
+
 function buildQuestion(sectionSlug, prompt, orderIndex) {
   return {
-    id: `${sectionSlug}-q${String(orderIndex + 1).padStart(2, "0")}`,
+    id: stableUuid(`${sectionSlug}:question:${orderIndex}:${prompt}`),
     prompt,
     answer_type: "likert_1_5",
     scoring_direction: "negative",
@@ -98,7 +107,7 @@ function buildNormalizedQuestionnaire(workbookData, editorialData) {
   for (const workbookSection of workbookData.sections) {
     const sectionSlug = slugify(workbookSection.name);
     sections.push({
-      id: `nr1-${sectionSlug}`,
+      id: stableUuid(`section:${sectionSlug}`),
       name: workbookSection.name,
       order_index: sections.length,
       source: "workbook",
@@ -120,7 +129,7 @@ function buildNormalizedQuestionnaire(workbookData, editorialData) {
 
     const sectionSlug = slugify(editorialSection.name);
     sections.push({
-      id: `nr1-${sectionSlug}`,
+      id: stableUuid(`section:${sectionSlug}`),
       name: editorialSection.name,
       order_index: sections.length,
       source: "editorial",

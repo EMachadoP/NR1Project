@@ -71,3 +71,21 @@ export async function createCampaign(data: {
 
   return campaign;
 }
+
+export async function deleteCampaign(campaignId: string) {
+  const supabase = createAdminSupabaseClient();
+  const { data, error } = await supabase
+    .from("campaigns")
+    .delete()
+    .eq("id", campaignId)
+    .select("id")
+    .maybeSingle();
+
+  if (error) {
+    throw error;
+  }
+
+  if (!data) {
+    throw new Error("NOT_FOUND");
+  }
+}
