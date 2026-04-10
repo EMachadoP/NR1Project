@@ -38,9 +38,6 @@ lines.push("-- =====================================================");
 lines.push("begin;");
 lines.push("");
 lines.push(
-  `delete from public.campaigns where questionnaire_id in (${sql(QUESTIONNAIRE_ID)}, ${sql(LEGACY_QUESTIONNAIRE_ID)});`
-);
-lines.push(
   `delete from public.questionnaire_questions where section_id in (select id from public.questionnaire_sections where questionnaire_id in (${sql(QUESTIONNAIRE_ID)}, ${sql(LEGACY_QUESTIONNAIRE_ID)}));`
 );
 lines.push(
@@ -79,13 +76,6 @@ lines.push(
         `  (${sql(question.id)}, ${sql(question.sectionId)}, ${sql(question.prompt)}, ${sql(question.answer_type)}, ${sql(question.scoring_direction)}, ${Number(question.weight).toFixed(1)}, ${question.is_required}, ${question.is_active}, ${question.order_index})`
     )
     .join(",\n") + ";"
-);
-lines.push("");
-lines.push(
-  "insert into public.campaigns (id, questionnaire_id, name, sector, unit, status, start_date, end_date, language, created_at)"
-);
-lines.push(
-  `values (${sql(CAMPAIGN_ID)}, ${sql(QUESTIONNAIRE_ID)}, ${sql("Diagnostico NR-1 - Setor de Costura")}, ${sql("Producao")}, ${sql("Costura")}, 'active', '2026-04-01', '2026-12-31', 'pt-BR', timezone('utc', now()));`
 );
 lines.push("");
 lines.push("select 'Questionarios' as tipo, count(*) as total from public.questionnaires");

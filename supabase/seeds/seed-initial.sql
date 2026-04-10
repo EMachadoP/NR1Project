@@ -7,7 +7,6 @@
 -- =====================================================
 begin;
 
-delete from public.campaigns where questionnaire_id in ('a1000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001');
 delete from public.questionnaire_questions where section_id in (select id from public.questionnaire_sections where questionnaire_id in ('a1000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001'));
 delete from public.questionnaire_sections where questionnaire_id in ('a1000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001');
 delete from public.questionnaires where id in ('a1000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001');
@@ -86,9 +85,6 @@ values
   ('0f2ffb7b-fc3f-531b-a237-9a06e4dde550', 'aee4bb60-7021-5350-968e-703eae6033a9', 'A repeticao das minhas atividades nao gera fadiga excessiva ao longo do turno.', 'likert_1_5', 'negative', 1.0, true, true, 1),
   ('c274a0eb-21a8-59fc-9b84-15e93b29b5c7', 'aee4bb60-7021-5350-968e-703eae6033a9', 'Tenho suporte para comunicar desconforto relacionado a movimentos repetitivos.', 'likert_1_5', 'negative', 1.0, true, true, 2),
   ('e950fdea-a045-5a2c-be34-5da128f89df7', 'aee4bb60-7021-5350-968e-703eae6033a9', 'A organizacao do trabalho ajuda a prevenir desgaste por repetitividade.', 'likert_1_5', 'negative', 1.0, true, true, 3);
-
-insert into public.campaigns (id, questionnaire_id, name, sector, unit, status, start_date, end_date, language, created_at)
-values ('b1000000-0000-0000-0000-000000000001', 'a1000000-0000-0000-0000-000000000001', 'Diagnostico NR-1 - Setor de Costura', 'Producao', 'Costura', 'active', '2026-04-01', '2026-12-31', 'pt-BR', timezone('utc', now()));
 
 select 'Questionarios' as tipo, count(*) as total from public.questionnaires
 union all

@@ -1,5 +1,6 @@
 const { createClient } = require("@supabase/supabase-js");
 const normalized = require("../supabase/seeds/nr1-questionnaire.json");
+const { buildCampaignSyncPlan } = require("./lib/campaign-sync-plan");
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -37,17 +38,26 @@ async function main() {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { error: deleteNewCampaignsError } = await supabase
+  const { data: existingCampaigns, error: existingCampaignsError } = await supabase
     .from("campaigns")
-    .delete()
-    .eq("questionnaire_id", QUESTIONNAIRE_ID);
-  if (deleteNewCampaignsError) throw deleteNewCampaignsError;
+    .select("id, name, status, questionnaire_id, sector, unit, start_date, end_date, language");
+  if (existingCampaignsError) throw existingCampaignsError;
 
-  const { error: deleteLegacyCampaignsError } = await supabase
-    .from("campaigns")
-    .delete()
-    .eq("questionnaire_id", LEGACY_QUESTIONNAIRE_ID);
-  if (deleteLegacyCampaignsError) throw deleteLegacyCampaignsError;
+  const syncPlan = buildCampaignSyncPlan({
+    questionnaireId: QUESTIONNAIRE_ID,
+    existingCampaigns: existingCampaigns ?? [],
+    defaultCampaign: {
+      id: CAMPAIGN_ID,
+      questionnaire_id: QUESTIONNAIRE_ID,
+      name: "Diagnostico NR-1 - Setor de Costura",
+      sector: "Producao",
+      unit: "Costura",
+      status: "active",
+      start_date: "2026-04-01",
+      end_date: "2026-12-31",
+      language: "pt-BR",
+    },
+  });
 
   const { data: targetSections, error: targetSectionsError } = await supabase
     .from("questionnaire_sections")
@@ -131,20 +141,12 @@ async function main() {
     .insert(questions);
   if (insertQuestionsError) throw insertQuestionsError;
 
-  const { error: insertCampaignError } = await supabase
-    .from("campaigns")
-    .insert({
-      id: CAMPAIGN_ID,
-      questionnaire_id: QUESTIONNAIRE_ID,
-      name: "Diagnostico NR-1 - Setor de Costura",
-      sector: "Producao",
-      unit: "Costura",
-      status: "active",
-      start_date: "2026-04-01",
-      end_date: "2026-12-31",
-      language: "pt-BR",
-    });
-  if (insertCampaignError) throw insertCampaignError;
+  if (syncPlan.shouldCreateDefaultCampaign) {
+    const { error: insertCampaignError } = await supabase
+      .from("campaigns")
+      .insert(syncPlan.defaultCampaign);
+    if (insertCampaignError) throw insertCampaignError;
+  }
 
   const { count: questionCount, error: countError } = await supabase
     .from("questionnaire_questions")
@@ -167,6 +169,7 @@ async function main() {
         warnings: normalized.warnings,
         sections: sections.length,
         questions: questionCount,
+        preservedCampaigns: syncPlan.campaignsToPreserve,
         campaigns,
       },
       null,
