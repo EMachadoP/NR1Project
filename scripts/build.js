@@ -10,7 +10,8 @@ if (isVercel && !hasSupabaseAccessToken) {
 }
 
 if (isVercel && hasSupabaseAccessToken) {
-  execSync("npx supabase db push --linked --yes", {
+  const projectRef = process.env.SUPABASE_PROJECT_REF ?? "xyhevjwbiczalwpwbfil";
+  execSync(`npx supabase db push --project-ref ${projectRef} --yes`, {
     stdio: "inherit",
     shell: true
   });
