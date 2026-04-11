@@ -1,6 +1,4 @@
 const { execSync } = require("node:child_process");
-const fs = require("node:fs");
-const path = require("node:path");
 
 const isVercel = ["1", "true"].includes((process.env.VERCEL ?? "").toLowerCase());
 const hasSupabaseAccessToken = Boolean(process.env.SUPABASE_ACCESS_TOKEN);
@@ -12,15 +10,16 @@ if (isVercel && !hasSupabaseAccessToken) {
 }
 
 if (isVercel && hasSupabaseAccessToken) {
-  const projectRef = process.env.SUPABASE_PROJECT_REF ?? "xyhevjwbiczalwpwbfil";
+  const dbUrl = process.env.SUPABASE_DB_URL;
+  if (!dbUrl) {
+    throw new Error(
+      "SUPABASE_DB_URL is required for Vercel builds. " +
+      "Set it to the direct connection string from Supabase dashboard: " +
+      "Settings > Database > Connection string (URI)."
+    );
+  }
 
-  // supabase db push --linked requires the project ref written by `supabase link`.
-  // In CI there is no local link, so we write the file manually.
-  const tempDir = path.join(__dirname, "..", "supabase", ".temp");
-  fs.mkdirSync(tempDir, { recursive: true });
-  fs.writeFileSync(path.join(tempDir, "project-ref"), projectRef, "utf8");
-
-  execSync("npx supabase db push --linked --yes", {
+  execSync(`npx supabase db push --db-url "${dbUrl}" --yes`, {
     stdio: "inherit",
     shell: true
   });
